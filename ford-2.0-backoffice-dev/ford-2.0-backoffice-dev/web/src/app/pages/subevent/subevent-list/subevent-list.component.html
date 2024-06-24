@@ -1,0 +1,137 @@
+<div class="container-fluid">
+    <app-page-title title="{{'subevent.subevents' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div *ngIf="isGettingEvents" class="event-loader spinner-border spinner-border-sm" role="status"></div>
+                            <label form="select-form">{{'subevent.subevent-list.event' | translate}}</label>
+                            <ng-select [(ngModel)]="selectedEvent" [searchable]="true"
+                                [disabled]="eventList.length == 0" (ngModelChange)="selectedEventChange()"
+                                placeholder="{{'subevent.subevent-list.select-event' | translate}}">
+                                <ng-option *ngFor="let event of eventList" [value]="event">
+                                    {{event.name}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-3">
+                            <label form="select-form">{{'subevent.subevent-list.event' | translate}}</label>
+                            <div class="app-search d-block p-0">
+                                <div class="position-relative">
+                                    <input #inputSearch [(ngModel)]="searchText" [disabled]="!selectedEvent"
+                                        name="textSearch" type="text" class="form-control"
+                                        placeholder="{{'header.search' | translate}}">
+                                    <span class="bx bx-search-alt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end align-items-center">
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                (click)="createSubevent()">
+                                <i class="bx bx-plus align-middle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && !selectedEvent">
+                        <span>
+                            {{ 'subevent.subevent-list.select-event' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'subevent.subevent-list.loading-events' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && selectedEvent && subeventList.length == 0">
+                        <span>
+                            {{ 'subevent.subevent-list.subevent-empty' | translate }}
+                        </span>
+                    </div>
+
+                    <div *ngIf="!isGettingList && selectedEvent && subeventList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="table-image-cell"></th>
+                                    <th>{{'subevent.subevent-list.name' | translate}}</th>
+                                    <th>{{'subevent.subevent-list.id' | translate}}</th>
+                                    <th>{{'subevent.subevent-list.start-date' | translate}}</th>
+                                    <th>{{'subevent.subevent-list.end-date' | translate}}</th>
+                                    <th>{{'subevent.subevent-list.guest-number' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let subevent of subeventList">
+                                    <td class="table-image-cell">
+                                        <img *ngIf="!subevent.image" class="rounded-circle" style="object-fit: cover;"
+                                            [src]="'./assets/images/car.png'" width="30" height="30">
+                                        <img *ngIf="subevent.image" class="rounded-circle" style="object-fit: cover;"
+                                            [src]="subevent.image" width="30" height="30">
+                                    </td>
+                                    <td>{{subevent.name}}</td>
+                                    <td>{{subevent.id}}</td>
+                                    <td>{{getDateToShow(subevent.dateFrom)}}</td>
+                                    <td>{{getDateToShow(subevent.dateTo)}}</td>
+                                    <td>{{subevent.guestNumber}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngIf="!isDeleting" type="button" class="btn btn-pink"
+                                            (click)="toGuestList(subevent)"
+                                            ngbTooltip="{{'subevent.subevent-list.guests' | translate}}">
+                                            <i class="bx bx-smile align-middle"></i>
+                                        </button>
+
+                                        <button *ngxPermissionsOnly="[isReadOnly()]" type="button"
+                                            class="btn btn-primary" style="margin-left: 10px"
+                                            (click)="viewSubevent(subevent.id)"
+                                            ngbTooltip="{{'global.view' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                        <ng-container *ngxPermissionsOnly="[isAdmin()]">
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-light"
+                                                style="margin-left: 10px" (click)="editSubevent(subevent.id)"
+                                                ngbTooltip="{{'global.edit' | translate}}">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                style="margin-left: 10px" (click)="askForDeleteSubevent(subevent.id)"
+                                                ngbTooltip="{{'global.delete' | translate}}">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </ng-container>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

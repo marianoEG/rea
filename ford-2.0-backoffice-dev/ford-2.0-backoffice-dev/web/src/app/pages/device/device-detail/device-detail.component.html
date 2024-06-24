@@ -1,0 +1,234 @@
+<div class="container-fluid">
+    <app-page-title title="{{'device.devices' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <form>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3">{{'global.basic-info' | translate}}</h4>
+                        <div class="row mb-3">
+                            <div class="col-sm-4">
+                                <label for="name">
+                                    {{'device.device-list.name' | translate}}
+                                </label>
+                                <input id="name" name="name" type="text" class="form-control cursor-default" readonly
+                                    [ngModel]="device?.name ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="system">
+                                    {{'device.device-list.system' | translate}}
+                                </label>
+                                <input id="system" name="system" type="text" class="form-control cursor-default"
+                                    readonly [ngModel]="device?.systemStr ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="brandAndModel">
+                                    {{'device.device-detail.brand-and-model' | translate}}
+                                </label>
+                                <input id="brandAndModel" name="brandAndModel" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="device?.brandAndModel ?? '-'">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4">
+                                <label for="appVersion">
+                                    {{'device.device-detail.app-version' | translate}}
+                                </label>
+                                <input id="appVersion" name="appVersion" type="text" class="form-control cursor-default"
+                                    readonly [ngModel]="device?.appVersion ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="ip">
+                                    {{'device.device-detail.ip' | translate}}
+                                </label>
+                                <input id="ip" name="ip" type="text" class="form-control cursor-default" readonly
+                                    [ngModel]="device?.ip ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="freeSpace">
+                                    {{'device.device-detail.free-space' | translate}}
+                                </label>
+                                <input id="freeSpace" name="freeSpace" type="text" class="form-control cursor-default"
+                                    readonly [ngModel]="device?.freeSpaceStr ?? '-'">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="baseSyncDate">
+                                    {{'device.device-list.base-sync-date' | translate}}
+                                </label>
+                                <input id="baseSyncDate" name="baseSyncDate" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="(device?.lastBaseDataDownloadSyncDate | customDate:'dd/MM/yyyy HH:mm:ss') ?? '-'">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="campaignSyncDate">
+                                    {{'device.device-list.campaign-sync-date' | translate}}
+                                </label>
+                                <input id="campaignSyncDate" name="campaignSyncDate" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="(device?.lastCampaignDownloadSyncDate | customDate:'dd/MM/yyyy HH:mm:ss') ?? '-'">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4">
+                                <label for="campaignUploadDate">
+                                    {{'device.device-list.campaign-upload-date' | translate}}</label>
+                                <input id="campaignUploadDate" name="campaignUploadDate" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="(device?.lastCampaignUploadSyncDate | customDate:'dd/MM/yyyy HH:mm:ss') ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="guestUploadDate">
+                                    {{'device.device-list.guest-upload-date' | translate}}</label>
+                                <input id="guestUploadDate" name="guestUploadDate" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="(device?.lastGuestUploadSyncDate | customDate:'dd/MM/yyyy HH:mm:ss') ?? '-'">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="formUploadDate">
+                                    {{'device.device-list.form-upload-date' | translate}}</label>
+                                <input id="formUploadDate" name="formUploadDate" type="text"
+                                    class="form-control cursor-default" readonly
+                                    [ngModel]="(device?.lastFormsUploadSyncDate | customDate:'dd/MM/yyyy HH:mm:ss') ?? '-'">
+                            </div>
+                        </div>
+
+                        <!-- Logs -->
+                        <div class="d-flex justify-content-center align-items-center mt-5 mb-3">
+                            <h4 class="card-title">{{'device.device-detail.logs.title' | translate}}</h4>
+                            <div class="flex-fill"></div>
+                            <ng-container *ngxPermissionsOnly="[adminStr]">
+                                <button [disabled]="isDeletingLogs || isDeletingErrors || isLogsEmpty" type="button"
+                                    class="btn btn-danger delete-btn" (click)="askForDeleteLogs()"
+                                    ngbTooltip="{{'device.device-detail.logs.delete-all' | translate}}">
+                                    <i *ngIf="!isDeletingLogs" class="bx bx-trash align-middle"></i>
+                                    <div *ngIf="isDeletingLogs" class="spinner-border spinner-border-sm custom-spinner-border" role="status">
+                                    </div>
+                                </button>
+                            </ng-container>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                            *ngIf="!isGettingData && isLogsEmpty">
+                            <span>
+                                {{ 'device.device-detail.logs.empty' | translate }}
+                            </span>
+                        </div>
+                        <div *ngIf="!isLogsEmpty" class="table-responsive table-scroll">
+                            <table class="table mb-0">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>{{'device.device-detail.logs.type' | translate}}</th>
+                                        <th>{{'device.device-detail.logs.date' | translate}}</th>
+                                        <th>{{'device.device-detail.logs.ip' | translate}}</th>
+                                        <th>{{'device.device-detail.logs.connection-type' | translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let log of device.logs">
+                                        <td>{{log.type | syncActionType | async}}</td>
+                                        <td>{{log.date ? (log.date | customDate:'dd/MM/yyyy HH:mm:ss') : '-'}}</td>
+                                        <td>{{log.ip ?? '-'}}</td>
+                                        <td>{{log.connectionType ?? '-'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Errors -->
+                        <div class="d-flex justify-content-center align-items-center mt-5 mb-3">
+                            <h4 class="card-title">{{'device.device-detail.errors.title' | translate}}</h4>
+                            <div class="flex-fill"></div>
+                            <ng-container *ngxPermissionsOnly="[adminStr]">
+                                <button [disabled]="isDeletingLogs || isDeletingErrors || isErrorsEmpty" type="button"
+                                    class="btn btn-danger delete-btn" (click)="askForDeleteErrors()"
+                                    ngbTooltip="{{'device.device-detail.errors.delete-all' | translate}}">
+                                    <i *ngIf="!isDeletingErrors" class="bx bx-trash align-middle"></i>
+                                    <div *ngIf="isDeletingErrors" class="spinner-border spinner-border-sm custom-spinner-border"
+                                        role="status">
+                                    </div>
+                                </button>
+                            </ng-container>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                            *ngIf="!isGettingData && isErrorsEmpty">
+                            <span>
+                                {{ 'device.device-detail.errors.empty' | translate }}
+                            </span>
+                        </div>
+                        <div *ngIf="!isErrorsEmpty" class="table-responsive table-scroll">
+                            <table class="table mb-0">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>{{'device.device-detail.errors.type' | translate}}</th>
+                                        <th>{{'device.device-detail.errors.description' | translate}}</th>
+                                        <th>{{'device.device-detail.errors.date' | translate}}</th>
+                                        <th>{{'device.device-detail.errors.connection-type' | translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let error of device.errors">
+                                        <td>{{error.type | errorSyncActionType | async}}</td>
+                                        <td>{{error.description ?? '-'}}</td>
+                                        <td>{{error.date ? (error.date | customDate:'dd/MM/yyyy HH:mm:ss') : '-'}}</td>
+                                        <td>{{error.connectionType ?? '-'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                         <!-- Notifications -->
+                         <div class="d-flex justify-content-center align-items-center mt-5 mb-3">
+                            <h4 class="card-title">{{'device.device-detail.notifications.title' | translate}}</h4>
+                            <div class="flex-fill"></div>
+                            <ng-container *ngxPermissionsOnly="[adminStr]">
+                                <button [disabled]="isDeletingLogs || isDeletingErrors || isLogsEmpty" type="button"
+                                    class="btn btn-primary" (click)="generateMessage()"
+                                    ngbTooltip="{{'device.device-detail.notifications.generate-message' | translate}}">
+                                    <i *ngIf="!isDeletingLogs" class="bx bx-plus align-middle"></i>
+                                    <div *ngIf="isDeletingLogs" class="spinner-border spinner-border-sm custom-spinner-border" role="status">
+                                    </div>
+                                </button>
+                            </ng-container>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                            *ngIf="!isGettingData && isNotificationsEmpty">
+                            <span>
+                                {{ 'device.device-detail.notifications.empty' | translate }}
+                            </span>
+                        </div>
+                        <div *ngIf="!isNotificationsEmpty" class="table-responsive table-scroll">
+                            <table class="table mb-0">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>{{'device.device-detail.notifications.message' | translate}}</th>
+                                        <th>{{'device.device-detail.notifications.creation-date' | translate}}</th>
+                                        <th>{{'device.device-detail.notifications.delivery-date' | translate}}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let notification of device.notifications">
+                                        <td>{{notification.message}}</td>
+                                        <td>{{notification.createdOnDate ? (notification.createdOnDate | customDate:'dd/MM/yyyy HH:mm:ss') : '-'}}</td>
+                                        <td>{{notification.deliveredDate ?? '-'}}</td>
+                                        <td><button *ngIf="!isDeletingNotification && notification.deliveredDate == null" type="button"
+                                            class="btn btn-danger" ngbTooltip="{{'global.delete' | translate}}" style="margin-left: 10px" (click)="askForDeleteNotification(notification.id)">
+                                            <i class="bx bx-trash align-middle"></i>
+                                        </button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button type="button" class="btn btn-primary" (click)="close()">
+                    {{'global.close' | translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

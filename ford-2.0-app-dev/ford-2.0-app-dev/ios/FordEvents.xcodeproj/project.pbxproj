@@ -1,0 +1,988 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* FordEventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FordEventsTests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-FordEvents.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FordEvents.a */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		7699B88040F8A987B510C191 /* libPods-FordEvents-FordEventsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-FordEvents-FordEventsTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E08050BD29130C3D00F30EAB /* FordAntennaCompWGL-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080507F29130C2E00F30EAB /* FordAntennaCompWGL-Black.otf */; };
+		E08050BE29130C3D00F30EAB /* FordAntennaExtraCondWGL-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508029130C2E00F30EAB /* FordAntennaExtraCondWGL-Thin.otf */; };
+		E08050BF29130C3D00F30EAB /* FordAntennaCompWGL-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508129130C2E00F30EAB /* FordAntennaCompWGL-Bold.otf */; };
+		E08050C029130C3D00F30EAB /* FordAntennaExtraCondWGL-RegIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508229130C2E00F30EAB /* FordAntennaExtraCondWGL-RegIta.otf */; };
+		E08050C129130C3D00F30EAB /* FordAntennaCompWGL-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508329130C2F00F30EAB /* FordAntennaCompWGL-ThinItalic.otf */; };
+		E08050C229130C3D00F30EAB /* FordAntennaWGL-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508429130C2F00F30EAB /* FordAntennaWGL-Black.otf */; };
+		E08050C329130C3D00F30EAB /* FordAntennaCompWGL-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508529130C2F00F30EAB /* FordAntennaCompWGL-Thin.otf */; };
+		E08050C429130C3D00F30EAB /* FordAntennaExtraCondWGL-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508629130C2F00F30EAB /* FordAntennaExtraCondWGL-BoldIt.otf */; };
+		E08050C529130C3D00F30EAB /* FordAntennaCondWGL-ExtLightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508729130C2F00F30EAB /* FordAntennaCondWGL-ExtLightIta.otf */; };
+		E08050C629130C3D00F30EAB /* FordAntennaExtraCondWGL-SemiboldIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508829130C3000F30EAB /* FordAntennaExtraCondWGL-SemiboldIta.otf */; };
+		E08050C729130C3D00F30EAB /* FordAntennaWGL-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508929130C3000F30EAB /* FordAntennaWGL-SemiboldItalic.otf */; };
+		E08050C829130C3D00F30EAB /* FordAntennaCompWGL-ExtLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508A29130C3000F30EAB /* FordAntennaCompWGL-ExtLight.otf */; };
+		E08050C929130C3D00F30EAB /* FordAntennaExtraCondWGL-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508B29130C3000F30EAB /* FordAntennaExtraCondWGL-Light.otf */; };
+		E08050CA29130C3E00F30EAB /* FordAntennaWGL-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508C29130C3100F30EAB /* FordAntennaWGL-ExtraLightItalic.otf */; };
+		E08050CB29130C3E00F30EAB /* FordAntennaCompWGL-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508D29130C3100F30EAB /* FordAntennaCompWGL-BlackItalic.otf */; };
+		E08050CC29130C3E00F30EAB /* FordAntennaCompWGL-MedItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508E29130C3100F30EAB /* FordAntennaCompWGL-MedItalic.otf */; };
+		E08050CD29130C3E00F30EAB /* FordAntennaExtraCondWGL-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080508F29130C3100F30EAB /* FordAntennaExtraCondWGL-Black.otf */; };
+		E08050CE29130C3E00F30EAB /* FordAntennaWGL-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509029130C3100F30EAB /* FordAntennaWGL-Medium.otf */; };
+		E08050CF29130C3E00F30EAB /* FordAntennaExtraCondWGL-Reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509129130C3200F30EAB /* FordAntennaExtraCondWGL-Reg.otf */; };
+		E08050D029130C3E00F30EAB /* FordAntennaWGL-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509229130C3200F30EAB /* FordAntennaWGL-Thin.otf */; };
+		E08050D129130C3E00F30EAB /* FordAntennaExtraCondWGL-LigIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509329130C3200F30EAB /* FordAntennaExtraCondWGL-LigIt.otf */; };
+		E08050D229130C3E00F30EAB /* FordAntennaCompWGL-Reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509429130C3200F30EAB /* FordAntennaCompWGL-Reg.otf */; };
+		E08050D329130C3E00F30EAB /* FordAntennaCondWGL-Reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509529130C3300F30EAB /* FordAntennaCondWGL-Reg.otf */; };
+		E08050D429130C3E00F30EAB /* FordAntennaExtraCondWGL-ThinIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509629130C3300F30EAB /* FordAntennaExtraCondWGL-ThinIta.otf */; };
+		E08050D529130C3E00F30EAB /* FordAntennaWGL-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509729130C3300F30EAB /* FordAntennaWGL-BlackItalic.otf */; };
+		E08050D629130C3E00F30EAB /* FordAntennaExtraCondWGL-BlackIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509829130C3300F30EAB /* FordAntennaExtraCondWGL-BlackIt.otf */; };
+		E08050D729130C3E00F30EAB /* FordAntennaExtraCondWGL-MedIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509929130C3300F30EAB /* FordAntennaExtraCondWGL-MedIt.otf */; };
+		E08050D829130C3E00F30EAB /* FordAntennaCondWGL-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509A29130C3400F30EAB /* FordAntennaCondWGL-Black.otf */; };
+		E08050D929130C3E00F30EAB /* FordAntennaCompWGL-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509B29130C3400F30EAB /* FordAntennaCompWGL-Light.otf */; };
+		E08050DA29130C3E00F30EAB /* FordAntennaCondWGL-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509C29130C3400F30EAB /* FordAntennaCondWGL-Thin.otf */; };
+		E08050DB29130C3E00F30EAB /* FordAntennaWGL-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509D29130C3500F30EAB /* FordAntennaWGL-Bold.otf */; };
+		E08050DC29130C3E00F30EAB /* FordAntennaWGL-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509E29130C3500F30EAB /* FordAntennaWGL-BoldItalic.otf */; };
+		E08050DD29130C3E00F30EAB /* FordAntennaCondWGL-MedItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E080509F29130C3500F30EAB /* FordAntennaCondWGL-MedItalic.otf */; };
+		E08050DE29130C3E00F30EAB /* FordAntennaExtraCondWGL-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A029130C3600F30EAB /* FordAntennaExtraCondWGL-Semibold.otf */; };
+		E08050DF29130C3E00F30EAB /* FordAntennaCondWGL-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A129130C3600F30EAB /* FordAntennaCondWGL-ThinItalic.otf */; };
+		E08050E029130C3E00F30EAB /* FordAntennaWGL-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A229130C3600F30EAB /* FordAntennaWGL-ThinItalic.otf */; };
+		E08050E129130C3E00F30EAB /* FordAntennaCondWGL-RegItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A329130C3600F30EAB /* FordAntennaCondWGL-RegItalic.otf */; };
+		E08050E229130C3E00F30EAB /* FordAntennaWGL-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A429130C3600F30EAB /* FordAntennaWGL-Semibold.otf */; };
+		E08050E329130C3E00F30EAB /* FordAntennaExtraCondWGL-ExtLigIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A529130C3700F30EAB /* FordAntennaExtraCondWGL-ExtLigIt.otf */; };
+		E08050E429130C3E00F30EAB /* FordAntennaCondWGL-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A629130C3700F30EAB /* FordAntennaCondWGL-Light.otf */; };
+		E08050E529130C3E00F30EAB /* FordAntennaWGL-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A729130C3700F30EAB /* FordAntennaWGL-ExtraLight.otf */; };
+		E08050E629130C3F00F30EAB /* FordAntennaExtraCondWGL-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A829130C3800F30EAB /* FordAntennaExtraCondWGL-Bold.otf */; };
+		E08050E729130C3F00F30EAB /* FordAntennaWGL-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050A929130C3800F30EAB /* FordAntennaWGL-LightItalic.otf */; };
+		E08050E829130C3F00F30EAB /* FordAntennaCompWGL-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AA29130C3800F30EAB /* FordAntennaCompWGL-BoldItalic.otf */; };
+		E08050E929130C3F00F30EAB /* FordAntennaExtraCondWGL-ExtLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AB29130C3900F30EAB /* FordAntennaExtraCondWGL-ExtLig.otf */; };
+		E08050EA29130C3F00F30EAB /* FordAntennaCondWGL-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AC29130C3900F30EAB /* FordAntennaCondWGL-Bold.otf */; };
+		E08050EB29130C3F00F30EAB /* FordAntennaExtraCondWGL-Med.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AD29130C3900F30EAB /* FordAntennaExtraCondWGL-Med.otf */; };
+		E08050EC29130C3F00F30EAB /* FordAntennaWGL-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AE29130C3900F30EAB /* FordAntennaWGL-MediumItalic.otf */; };
+		E08050ED29130C3F00F30EAB /* FordAntennaCompWGL-LightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050AF29130C3A00F30EAB /* FordAntennaCompWGL-LightIta.otf */; };
+		E08050EE29130C3F00F30EAB /* FordAntennaWGL-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B029130C3A00F30EAB /* FordAntennaWGL-RegularItalic.otf */; };
+		E08050EF29130C3F00F30EAB /* FordAntennaCompWGL-SemiboldIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B129130C3A00F30EAB /* FordAntennaCompWGL-SemiboldIta.otf */; };
+		E08050F029130C3F00F30EAB /* FordAntennaCondWGL-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B229130C3A00F30EAB /* FordAntennaCondWGL-BoldItalic.otf */; };
+		E08050F129130C3F00F30EAB /* FordAntennaCondWGL-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B329130C3A00F30EAB /* FordAntennaCondWGL-ExtraLight.otf */; };
+		E08050F229130C3F00F30EAB /* FordAntennaCompWGL-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B429130C3B00F30EAB /* FordAntennaCompWGL-Semibold.otf */; };
+		E08050F329130C3F00F30EAB /* FordAntennaCompWGL-Med.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B529130C3B00F30EAB /* FordAntennaCompWGL-Med.otf */; };
+		E08050F429130C3F00F30EAB /* FordAntennaCondWGL-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B629130C3B00F30EAB /* FordAntennaCondWGL-BlackItalic.otf */; };
+		E08050F529130C3F00F30EAB /* FordAntennaWGL-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B729130C3C00F30EAB /* FordAntennaWGL-Light.otf */; };
+		E08050F629130C3F00F30EAB /* FordAntennaCondWGL-Med.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B829130C3C00F30EAB /* FordAntennaCondWGL-Med.otf */; };
+		E08050F729130C3F00F30EAB /* FordAntennaCompWGL-RegItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050B929130C3C00F30EAB /* FordAntennaCompWGL-RegItalic.otf */; };
+		E08050F829130C3F00F30EAB /* FordAntennaCompWGL-ExtLigIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050BA29130C3C00F30EAB /* FordAntennaCompWGL-ExtLigIt.otf */; };
+		E08050F929130C3F00F30EAB /* FordAntennaCondWGL-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050BB29130C3D00F30EAB /* FordAntennaCondWGL-LightItalic.otf */; };
+		E08050FA29130C3F00F30EAB /* FordAntennaWGL-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E08050BC29130C3D00F30EAB /* FordAntennaWGL-Regular.otf */; };
+		E080514E29147E5B00F30EAB /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = E080514D29147E5B00F30EAB /* main.jsbundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = FordEvents;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* FordEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FordEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* FordEventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FordEventsTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Ford Events 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ford Events 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FordEvents/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = FordEvents/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FordEvents/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FordEvents/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FordEvents/main.m; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-FordEvents-FordEventsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FordEvents-FordEventsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-FordEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FordEvents.debug.xcconfig"; path = "Target Support Files/Pods-FordEvents/Pods-FordEvents.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-FordEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FordEvents.release.xcconfig"; path = "Target Support Files/Pods-FordEvents/Pods-FordEvents.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-FordEvents-FordEventsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FordEvents-FordEventsTests.debug.xcconfig"; path = "Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-FordEvents.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FordEvents.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FordEvents/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-FordEvents-FordEventsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FordEvents-FordEventsTests.release.xcconfig"; path = "Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests.release.xcconfig"; sourceTree = "<group>"; };
+		E080507F29130C2E00F30EAB /* FordAntennaCompWGL-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Black.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Black.otf"; sourceTree = "<group>"; };
+		E080508029130C2E00F30EAB /* FordAntennaExtraCondWGL-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Thin.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Thin.otf"; sourceTree = "<group>"; };
+		E080508129130C2E00F30EAB /* FordAntennaCompWGL-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Bold.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Bold.otf"; sourceTree = "<group>"; };
+		E080508229130C2E00F30EAB /* FordAntennaExtraCondWGL-RegIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-RegIta.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-RegIta.otf"; sourceTree = "<group>"; };
+		E080508329130C2F00F30EAB /* FordAntennaCompWGL-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-ThinItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-ThinItalic.otf"; sourceTree = "<group>"; };
+		E080508429130C2F00F30EAB /* FordAntennaWGL-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Black.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Black.otf"; sourceTree = "<group>"; };
+		E080508529130C2F00F30EAB /* FordAntennaCompWGL-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Thin.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Thin.otf"; sourceTree = "<group>"; };
+		E080508629130C2F00F30EAB /* FordAntennaExtraCondWGL-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-BoldIt.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-BoldIt.otf"; sourceTree = "<group>"; };
+		E080508729130C2F00F30EAB /* FordAntennaCondWGL-ExtLightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-ExtLightIta.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-ExtLightIta.otf"; sourceTree = "<group>"; };
+		E080508829130C3000F30EAB /* FordAntennaExtraCondWGL-SemiboldIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-SemiboldIta.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-SemiboldIta.otf"; sourceTree = "<group>"; };
+		E080508929130C3000F30EAB /* FordAntennaWGL-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-SemiboldItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		E080508A29130C3000F30EAB /* FordAntennaCompWGL-ExtLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-ExtLight.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-ExtLight.otf"; sourceTree = "<group>"; };
+		E080508B29130C3000F30EAB /* FordAntennaExtraCondWGL-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Light.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Light.otf"; sourceTree = "<group>"; };
+		E080508C29130C3100F30EAB /* FordAntennaWGL-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-ExtraLightItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		E080508D29130C3100F30EAB /* FordAntennaCompWGL-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-BlackItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-BlackItalic.otf"; sourceTree = "<group>"; };
+		E080508E29130C3100F30EAB /* FordAntennaCompWGL-MedItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-MedItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-MedItalic.otf"; sourceTree = "<group>"; };
+		E080508F29130C3100F30EAB /* FordAntennaExtraCondWGL-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Black.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Black.otf"; sourceTree = "<group>"; };
+		E080509029130C3100F30EAB /* FordAntennaWGL-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Medium.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Medium.otf"; sourceTree = "<group>"; };
+		E080509129130C3200F30EAB /* FordAntennaExtraCondWGL-Reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Reg.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Reg.otf"; sourceTree = "<group>"; };
+		E080509229130C3200F30EAB /* FordAntennaWGL-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Thin.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Thin.otf"; sourceTree = "<group>"; };
+		E080509329130C3200F30EAB /* FordAntennaExtraCondWGL-LigIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-LigIt.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-LigIt.otf"; sourceTree = "<group>"; };
+		E080509429130C3200F30EAB /* FordAntennaCompWGL-Reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Reg.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Reg.otf"; sourceTree = "<group>"; };
+		E080509529130C3300F30EAB /* FordAntennaCondWGL-Reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Reg.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Reg.otf"; sourceTree = "<group>"; };
+		E080509629130C3300F30EAB /* FordAntennaExtraCondWGL-ThinIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-ThinIta.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-ThinIta.otf"; sourceTree = "<group>"; };
+		E080509729130C3300F30EAB /* FordAntennaWGL-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-BlackItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-BlackItalic.otf"; sourceTree = "<group>"; };
+		E080509829130C3300F30EAB /* FordAntennaExtraCondWGL-BlackIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-BlackIt.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-BlackIt.otf"; sourceTree = "<group>"; };
+		E080509929130C3300F30EAB /* FordAntennaExtraCondWGL-MedIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-MedIt.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-MedIt.otf"; sourceTree = "<group>"; };
+		E080509A29130C3400F30EAB /* FordAntennaCondWGL-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Black.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Black.otf"; sourceTree = "<group>"; };
+		E080509B29130C3400F30EAB /* FordAntennaCompWGL-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Light.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Light.otf"; sourceTree = "<group>"; };
+		E080509C29130C3400F30EAB /* FordAntennaCondWGL-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Thin.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Thin.otf"; sourceTree = "<group>"; };
+		E080509D29130C3500F30EAB /* FordAntennaWGL-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Bold.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Bold.otf"; sourceTree = "<group>"; };
+		E080509E29130C3500F30EAB /* FordAntennaWGL-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-BoldItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-BoldItalic.otf"; sourceTree = "<group>"; };
+		E080509F29130C3500F30EAB /* FordAntennaCondWGL-MedItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-MedItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-MedItalic.otf"; sourceTree = "<group>"; };
+		E08050A029130C3600F30EAB /* FordAntennaExtraCondWGL-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Semibold.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Semibold.otf"; sourceTree = "<group>"; };
+		E08050A129130C3600F30EAB /* FordAntennaCondWGL-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-ThinItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-ThinItalic.otf"; sourceTree = "<group>"; };
+		E08050A229130C3600F30EAB /* FordAntennaWGL-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-ThinItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-ThinItalic.otf"; sourceTree = "<group>"; };
+		E08050A329130C3600F30EAB /* FordAntennaCondWGL-RegItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-RegItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-RegItalic.otf"; sourceTree = "<group>"; };
+		E08050A429130C3600F30EAB /* FordAntennaWGL-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Semibold.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Semibold.otf"; sourceTree = "<group>"; };
+		E08050A529130C3700F30EAB /* FordAntennaExtraCondWGL-ExtLigIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-ExtLigIt.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-ExtLigIt.otf"; sourceTree = "<group>"; };
+		E08050A629130C3700F30EAB /* FordAntennaCondWGL-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Light.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Light.otf"; sourceTree = "<group>"; };
+		E08050A729130C3700F30EAB /* FordAntennaWGL-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-ExtraLight.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-ExtraLight.otf"; sourceTree = "<group>"; };
+		E08050A829130C3800F30EAB /* FordAntennaExtraCondWGL-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Bold.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Bold.otf"; sourceTree = "<group>"; };
+		E08050A929130C3800F30EAB /* FordAntennaWGL-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-LightItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-LightItalic.otf"; sourceTree = "<group>"; };
+		E08050AA29130C3800F30EAB /* FordAntennaCompWGL-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-BoldItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-BoldItalic.otf"; sourceTree = "<group>"; };
+		E08050AB29130C3900F30EAB /* FordAntennaExtraCondWGL-ExtLig.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-ExtLig.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-ExtLig.otf"; sourceTree = "<group>"; };
+		E08050AC29130C3900F30EAB /* FordAntennaCondWGL-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Bold.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Bold.otf"; sourceTree = "<group>"; };
+		E08050AD29130C3900F30EAB /* FordAntennaExtraCondWGL-Med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaExtraCondWGL-Med.otf"; path = "../../../src/assets/fonts/FordAntennaExtraCondWGL-Med.otf"; sourceTree = "<group>"; };
+		E08050AE29130C3900F30EAB /* FordAntennaWGL-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-MediumItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-MediumItalic.otf"; sourceTree = "<group>"; };
+		E08050AF29130C3A00F30EAB /* FordAntennaCompWGL-LightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-LightIta.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-LightIta.otf"; sourceTree = "<group>"; };
+		E08050B029130C3A00F30EAB /* FordAntennaWGL-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-RegularItalic.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-RegularItalic.otf"; sourceTree = "<group>"; };
+		E08050B129130C3A00F30EAB /* FordAntennaCompWGL-SemiboldIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-SemiboldIta.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-SemiboldIta.otf"; sourceTree = "<group>"; };
+		E08050B229130C3A00F30EAB /* FordAntennaCondWGL-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-BoldItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-BoldItalic.otf"; sourceTree = "<group>"; };
+		E08050B329130C3A00F30EAB /* FordAntennaCondWGL-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-ExtraLight.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-ExtraLight.otf"; sourceTree = "<group>"; };
+		E08050B429130C3B00F30EAB /* FordAntennaCompWGL-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Semibold.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Semibold.otf"; sourceTree = "<group>"; };
+		E08050B529130C3B00F30EAB /* FordAntennaCompWGL-Med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-Med.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-Med.otf"; sourceTree = "<group>"; };
+		E08050B629130C3B00F30EAB /* FordAntennaCondWGL-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-BlackItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-BlackItalic.otf"; sourceTree = "<group>"; };
+		E08050B729130C3C00F30EAB /* FordAntennaWGL-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Light.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Light.otf"; sourceTree = "<group>"; };
+		E08050B829130C3C00F30EAB /* FordAntennaCondWGL-Med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-Med.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-Med.otf"; sourceTree = "<group>"; };
+		E08050B929130C3C00F30EAB /* FordAntennaCompWGL-RegItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-RegItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-RegItalic.otf"; sourceTree = "<group>"; };
+		E08050BA29130C3C00F30EAB /* FordAntennaCompWGL-ExtLigIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCompWGL-ExtLigIt.otf"; path = "../../../src/assets/fonts/FordAntennaCompWGL-ExtLigIt.otf"; sourceTree = "<group>"; };
+		E08050BB29130C3D00F30EAB /* FordAntennaCondWGL-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaCondWGL-LightItalic.otf"; path = "../../../src/assets/fonts/FordAntennaCondWGL-LightItalic.otf"; sourceTree = "<group>"; };
+		E08050BC29130C3D00F30EAB /* FordAntennaWGL-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FordAntennaWGL-Regular.otf"; path = "../../../src/assets/fonts/FordAntennaWGL-Regular.otf"; sourceTree = "<group>"; };
+		E080514D29147E5B00F30EAB /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7699B88040F8A987B510C191 /* libPods-FordEvents-FordEventsTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C80B921A6F3F58F76C31292 /* libPods-FordEvents.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* FordEventsTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* FordEventsTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = FordEventsTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* FordEvents */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+			);
+			name = FordEvents;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-FordEvents.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-FordEvents-FordEventsTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				E080514D29147E5B00F30EAB /* main.jsbundle */,
+				E08AEFDD290C50360075C457 /* Resources */,
+				13B07FAE1A68108700A75B9A /* FordEvents */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* FordEventsTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* Ford Events 2.0.app */,
+				00E356EE1AD99517003FC87E /* FordEventsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-FordEvents.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-FordEvents.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-FordEvents-FordEventsTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-FordEvents-FordEventsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E080507E29130C1100F30EAB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E080507F29130C2E00F30EAB /* FordAntennaCompWGL-Black.otf */,
+				E080508D29130C3100F30EAB /* FordAntennaCompWGL-BlackItalic.otf */,
+				E080508129130C2E00F30EAB /* FordAntennaCompWGL-Bold.otf */,
+				E08050AA29130C3800F30EAB /* FordAntennaCompWGL-BoldItalic.otf */,
+				E080508A29130C3000F30EAB /* FordAntennaCompWGL-ExtLight.otf */,
+				E08050BA29130C3C00F30EAB /* FordAntennaCompWGL-ExtLigIt.otf */,
+				E080509B29130C3400F30EAB /* FordAntennaCompWGL-Light.otf */,
+				E08050AF29130C3A00F30EAB /* FordAntennaCompWGL-LightIta.otf */,
+				E08050B529130C3B00F30EAB /* FordAntennaCompWGL-Med.otf */,
+				E080508E29130C3100F30EAB /* FordAntennaCompWGL-MedItalic.otf */,
+				E080509429130C3200F30EAB /* FordAntennaCompWGL-Reg.otf */,
+				E08050B929130C3C00F30EAB /* FordAntennaCompWGL-RegItalic.otf */,
+				E08050B429130C3B00F30EAB /* FordAntennaCompWGL-Semibold.otf */,
+				E08050B129130C3A00F30EAB /* FordAntennaCompWGL-SemiboldIta.otf */,
+				E080508529130C2F00F30EAB /* FordAntennaCompWGL-Thin.otf */,
+				E080508329130C2F00F30EAB /* FordAntennaCompWGL-ThinItalic.otf */,
+				E080509A29130C3400F30EAB /* FordAntennaCondWGL-Black.otf */,
+				E08050B629130C3B00F30EAB /* FordAntennaCondWGL-BlackItalic.otf */,
+				E08050AC29130C3900F30EAB /* FordAntennaCondWGL-Bold.otf */,
+				E08050B229130C3A00F30EAB /* FordAntennaCondWGL-BoldItalic.otf */,
+				E080508729130C2F00F30EAB /* FordAntennaCondWGL-ExtLightIta.otf */,
+				E08050B329130C3A00F30EAB /* FordAntennaCondWGL-ExtraLight.otf */,
+				E08050A629130C3700F30EAB /* FordAntennaCondWGL-Light.otf */,
+				E08050BB29130C3D00F30EAB /* FordAntennaCondWGL-LightItalic.otf */,
+				E08050B829130C3C00F30EAB /* FordAntennaCondWGL-Med.otf */,
+				E080509F29130C3500F30EAB /* FordAntennaCondWGL-MedItalic.otf */,
+				E080509529130C3300F30EAB /* FordAntennaCondWGL-Reg.otf */,
+				E08050A329130C3600F30EAB /* FordAntennaCondWGL-RegItalic.otf */,
+				E080509C29130C3400F30EAB /* FordAntennaCondWGL-Thin.otf */,
+				E08050A129130C3600F30EAB /* FordAntennaCondWGL-ThinItalic.otf */,
+				E080508F29130C3100F30EAB /* FordAntennaExtraCondWGL-Black.otf */,
+				E080509829130C3300F30EAB /* FordAntennaExtraCondWGL-BlackIt.otf */,
+				E08050A829130C3800F30EAB /* FordAntennaExtraCondWGL-Bold.otf */,
+				E080508629130C2F00F30EAB /* FordAntennaExtraCondWGL-BoldIt.otf */,
+				E08050AB29130C3900F30EAB /* FordAntennaExtraCondWGL-ExtLig.otf */,
+				E08050A529130C3700F30EAB /* FordAntennaExtraCondWGL-ExtLigIt.otf */,
+				E080508B29130C3000F30EAB /* FordAntennaExtraCondWGL-Light.otf */,
+				E080509329130C3200F30EAB /* FordAntennaExtraCondWGL-LigIt.otf */,
+				E08050AD29130C3900F30EAB /* FordAntennaExtraCondWGL-Med.otf */,
+				E080509929130C3300F30EAB /* FordAntennaExtraCondWGL-MedIt.otf */,
+				E080509129130C3200F30EAB /* FordAntennaExtraCondWGL-Reg.otf */,
+				E080508229130C2E00F30EAB /* FordAntennaExtraCondWGL-RegIta.otf */,
+				E08050A029130C3600F30EAB /* FordAntennaExtraCondWGL-Semibold.otf */,
+				E080508829130C3000F30EAB /* FordAntennaExtraCondWGL-SemiboldIta.otf */,
+				E080508029130C2E00F30EAB /* FordAntennaExtraCondWGL-Thin.otf */,
+				E080509629130C3300F30EAB /* FordAntennaExtraCondWGL-ThinIta.otf */,
+				E080508429130C2F00F30EAB /* FordAntennaWGL-Black.otf */,
+				E080509729130C3300F30EAB /* FordAntennaWGL-BlackItalic.otf */,
+				E080509D29130C3500F30EAB /* FordAntennaWGL-Bold.otf */,
+				E080509E29130C3500F30EAB /* FordAntennaWGL-BoldItalic.otf */,
+				E08050A729130C3700F30EAB /* FordAntennaWGL-ExtraLight.otf */,
+				E080508C29130C3100F30EAB /* FordAntennaWGL-ExtraLightItalic.otf */,
+				E08050B729130C3C00F30EAB /* FordAntennaWGL-Light.otf */,
+				E08050A929130C3800F30EAB /* FordAntennaWGL-LightItalic.otf */,
+				E080509029130C3100F30EAB /* FordAntennaWGL-Medium.otf */,
+				E08050AE29130C3900F30EAB /* FordAntennaWGL-MediumItalic.otf */,
+				E08050BC29130C3D00F30EAB /* FordAntennaWGL-Regular.otf */,
+				E08050B029130C3A00F30EAB /* FordAntennaWGL-RegularItalic.otf */,
+				E08050A429130C3600F30EAB /* FordAntennaWGL-Semibold.otf */,
+				E080508929130C3000F30EAB /* FordAntennaWGL-SemiboldItalic.otf */,
+				E080509229130C3200F30EAB /* FordAntennaWGL-Thin.otf */,
+				E08050A229130C3600F30EAB /* FordAntennaWGL-ThinItalic.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E08AEFDD290C50360075C457 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E080507E29130C1100F30EAB /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* FordEventsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FordEventsTests" */;
+			buildPhases = (
+				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
+				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = FordEventsTests;
+			productName = FordEventsTests;
+			productReference = 00E356EE1AD99517003FC87E /* FordEventsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* FordEvents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FordEvents" */;
+			buildPhases = (
+				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
+				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FordEvents;
+			productName = FordEvents;
+			productReference = 13B07F961A680F5B00A75B9A /* Ford Events 2.0.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FordEvents" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* FordEvents */,
+				00E356ED1AD99517003FC87E /* FordEventsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E080514E29147E5B00F30EAB /* main.jsbundle in Resources */,
+				E08050C029130C3D00F30EAB /* FordAntennaExtraCondWGL-RegIta.otf in Resources */,
+				E08050D729130C3E00F30EAB /* FordAntennaExtraCondWGL-MedIt.otf in Resources */,
+				E08050DC29130C3E00F30EAB /* FordAntennaWGL-BoldItalic.otf in Resources */,
+				E08050F329130C3F00F30EAB /* FordAntennaCompWGL-Med.otf in Resources */,
+				E08050C529130C3D00F30EAB /* FordAntennaCondWGL-ExtLightIta.otf in Resources */,
+				E08050CC29130C3E00F30EAB /* FordAntennaCompWGL-MedItalic.otf in Resources */,
+				E08050C929130C3D00F30EAB /* FordAntennaExtraCondWGL-Light.otf in Resources */,
+				E08050E629130C3F00F30EAB /* FordAntennaExtraCondWGL-Bold.otf in Resources */,
+				E08050F829130C3F00F30EAB /* FordAntennaCompWGL-ExtLigIt.otf in Resources */,
+				E08050E029130C3E00F30EAB /* FordAntennaWGL-ThinItalic.otf in Resources */,
+				E08050FA29130C3F00F30EAB /* FordAntennaWGL-Regular.otf in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				E08050F729130C3F00F30EAB /* FordAntennaCompWGL-RegItalic.otf in Resources */,
+				E08050ED29130C3F00F30EAB /* FordAntennaCompWGL-LightIta.otf in Resources */,
+				E08050F029130C3F00F30EAB /* FordAntennaCondWGL-BoldItalic.otf in Resources */,
+				E08050BF29130C3D00F30EAB /* FordAntennaCompWGL-Bold.otf in Resources */,
+				E08050E729130C3F00F30EAB /* FordAntennaWGL-LightItalic.otf in Resources */,
+				E08050CF29130C3E00F30EAB /* FordAntennaExtraCondWGL-Reg.otf in Resources */,
+				E08050D129130C3E00F30EAB /* FordAntennaExtraCondWGL-LigIt.otf in Resources */,
+				E08050C329130C3D00F30EAB /* FordAntennaCompWGL-Thin.otf in Resources */,
+				E08050EA29130C3F00F30EAB /* FordAntennaCondWGL-Bold.otf in Resources */,
+				E08050F629130C3F00F30EAB /* FordAntennaCondWGL-Med.otf in Resources */,
+				E08050C229130C3D00F30EAB /* FordAntennaWGL-Black.otf in Resources */,
+				E08050E929130C3F00F30EAB /* FordAntennaExtraCondWGL-ExtLig.otf in Resources */,
+				E08050F229130C3F00F30EAB /* FordAntennaCompWGL-Semibold.otf in Resources */,
+				E08050C629130C3D00F30EAB /* FordAntennaExtraCondWGL-SemiboldIta.otf in Resources */,
+				E08050E529130C3E00F30EAB /* FordAntennaWGL-ExtraLight.otf in Resources */,
+				E08050DB29130C3E00F30EAB /* FordAntennaWGL-Bold.otf in Resources */,
+				E08050EC29130C3F00F30EAB /* FordAntennaWGL-MediumItalic.otf in Resources */,
+				E08050BD29130C3D00F30EAB /* FordAntennaCompWGL-Black.otf in Resources */,
+				E08050CD29130C3E00F30EAB /* FordAntennaExtraCondWGL-Black.otf in Resources */,
+				E08050EE29130C3F00F30EAB /* FordAntennaWGL-RegularItalic.otf in Resources */,
+				E08050DF29130C3E00F30EAB /* FordAntennaCondWGL-ThinItalic.otf in Resources */,
+				E08050E329130C3E00F30EAB /* FordAntennaExtraCondWGL-ExtLigIt.otf in Resources */,
+				E08050C429130C3D00F30EAB /* FordAntennaExtraCondWGL-BoldIt.otf in Resources */,
+				E08050DD29130C3E00F30EAB /* FordAntennaCondWGL-MedItalic.otf in Resources */,
+				E08050D429130C3E00F30EAB /* FordAntennaExtraCondWGL-ThinIta.otf in Resources */,
+				E08050DA29130C3E00F30EAB /* FordAntennaCondWGL-Thin.otf in Resources */,
+				E08050C729130C3D00F30EAB /* FordAntennaWGL-SemiboldItalic.otf in Resources */,
+				E08050E429130C3E00F30EAB /* FordAntennaCondWGL-Light.otf in Resources */,
+				E08050CA29130C3E00F30EAB /* FordAntennaWGL-ExtraLightItalic.otf in Resources */,
+				E08050E229130C3E00F30EAB /* FordAntennaWGL-Semibold.otf in Resources */,
+				E08050BE29130C3D00F30EAB /* FordAntennaExtraCondWGL-Thin.otf in Resources */,
+				E08050D329130C3E00F30EAB /* FordAntennaCondWGL-Reg.otf in Resources */,
+				E08050D629130C3E00F30EAB /* FordAntennaExtraCondWGL-BlackIt.otf in Resources */,
+				E08050F929130C3F00F30EAB /* FordAntennaCondWGL-LightItalic.otf in Resources */,
+				E08050E829130C3F00F30EAB /* FordAntennaCompWGL-BoldItalic.otf in Resources */,
+				E08050EB29130C3F00F30EAB /* FordAntennaExtraCondWGL-Med.otf in Resources */,
+				E08050F129130C3F00F30EAB /* FordAntennaCondWGL-ExtraLight.otf in Resources */,
+				E08050C829130C3D00F30EAB /* FordAntennaCompWGL-ExtLight.otf in Resources */,
+				E08050CE29130C3E00F30EAB /* FordAntennaWGL-Medium.otf in Resources */,
+				E08050CB29130C3E00F30EAB /* FordAntennaCompWGL-BlackItalic.otf in Resources */,
+				E08050F429130C3F00F30EAB /* FordAntennaCondWGL-BlackItalic.otf in Resources */,
+				E08050EF29130C3F00F30EAB /* FordAntennaCompWGL-SemiboldIta.otf in Resources */,
+				E08050E129130C3E00F30EAB /* FordAntennaCondWGL-RegItalic.otf in Resources */,
+				E08050D929130C3E00F30EAB /* FordAntennaCompWGL-Light.otf in Resources */,
+				E08050C129130C3D00F30EAB /* FordAntennaCompWGL-ThinItalic.otf in Resources */,
+				E08050D229130C3E00F30EAB /* FordAntennaCompWGL-Reg.otf in Resources */,
+				E08050F529130C3F00F30EAB /* FordAntennaWGL-Light.otf in Resources */,
+				E08050D529130C3E00F30EAB /* FordAntennaWGL-BlackItalic.otf in Resources */,
+				E08050D029130C3E00F30EAB /* FordAntennaWGL-Thin.otf in Resources */,
+				E08050DE29130C3E00F30EAB /* FordAntennaExtraCondWGL-Semibold.otf in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E08050D829130C3E00F30EAB /* FordAntennaCondWGL-Black.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FordEvents-FordEventsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FordEvents-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FordEvents/Pods-FordEvents-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FordEvents-FordEventsTests/Pods-FordEvents-FordEventsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* FordEventsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* FordEvents */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-FordEvents-FordEventsTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FordEventsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FordEvents.app/FordEvents";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-FordEvents-FordEventsTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = FordEventsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FordEvents.app/FordEvents";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-FordEvents.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 449L2BB2MT;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = FordEvents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ar.com.ford.eventos.2.0;
+				PRODUCT_NAME = "Ford Events 2.0";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-FordEvents.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 449L2BB2MT;
+				INFOPLIST_FILE = FordEvents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ar.com.ford.eventos.2.0;
+				PRODUCT_NAME = "Ford Events 2.0";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FordEventsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FordEvents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FordEvents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

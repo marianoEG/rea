@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <app-page-title title="{{vehicleName + ' - ' +  ('version.versions' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                (click)="createVersion()">
+                                <i class="bx bx-plus align-middle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'version.version-list.loading-versions' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && (!versionsList || versionsList.length == 0)">
+                        <span>
+                            {{ 'version.version-list.version-empty' | translate }}
+                        </span>
+                    </div>
+
+
+                    <div *ngIf="!isGettingList && versionsList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'version.version-list.name' | translate}}</th>
+                                    <th>{{'version.version-list.price' | translate}}</th>
+                                    <th>{{'version.version-list.model-year' | translate}}</th>
+                                    <th>{{'version.version-list.TMA-SEQ' | translate}}</th>
+                                    <th>{{'version.version-list.enabled' | translate}}</th>
+                                    <th>{{'version.pre-launch' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let version of versionsList">
+                                    <td class="middle">{{version.name}}</td>
+                                    <td class="middle cursor-pointer" (click)="version.isSelected = true">
+                                        <span class="cursor-pointer" (click)="version.isSelected = true"
+                                            *ngIf="!version.isSelected">
+                                            {{version.currency + '$' + version.price}}
+                                        </span>
+                                        <!-- Change Currency -->
+                                        <div class="d-flex" *ngIf="version.isSelected">
+                                            <select name="currency" [(ngModel)]="version.newCurrency"
+                                                class="form-control currency version-currency-select">
+                                                <option *ngFor="let currency of currencyArray" [value]="currency">
+                                                    {{currency + '$'}}
+                                                </option>
+                                            </select>
+                                            <input class="form-control currency" type="number" id="price" name="price"
+                                                [(ngModel)]="version.newPrice"
+                                                placeholder="{{'version.version-edition.price' | translate}}">
+
+                                            <!-- Accept Button -->
+                                            <button type="button" class="btn btn-primary"
+                                                [disabled]="isChangingPriceInProcess()" style="margin-left: 4px"
+                                                (click)="$event.stopPropagation(); changeVersionPrice(version)">
+                                                <i class="bx bx-check align-middle"></i>
+                                            </button>
+
+                                            <!-- Cancel Button -->
+                                            <button type="button" class="btn btn-danger" style="margin-left: 4px"
+                                                [disabled]="isChangingPriceInProcess()"
+                                                (click)="$event.stopPropagation(); cancelChangePrice(version)">
+                                                <i class="bx bx-x align-middle"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="middle">{{version.modelYear}}</td>
+                                    <td class="middle">{{(version.tma ?? '') + '-' + (version.seq ?? '')}}</td>
+                                    <td class="middle">{{(version.enabled ? 'global.yes' : 'global.no') | translate}}
+                                    </td>
+                                    <td class="middle">
+                                        <ui-switch defaultBoColor="#00095b" size="small" color="#00095b"
+                                            style="margin-left: 10px;" [checked]="version.preLaunch == true"
+                                            (change)="setPreLaunch(version, $event)">
+                                        </ui-switch>
+                                    </td>
+                                    <td class="d-flex justify-content-end align-items-center">
+
+                                        <div class="spinner-border spinner-border-sm me-2" role="status"
+                                            [style.visibility]="(isDeleting || isSettingPreLaunchValue || version.isChangingPrice) ? 'visible' : 'hidden'">
+                                        </div>
+
+                                        <button *ngxPermissionsOnly="[isReadOnly()]" type="button"
+                                            class="btn btn-primary" style="margin-left: 10px"
+                                            (click)="viewVersion(version.id)"
+                                            ngbTooltip="{{'global.view' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                        <ng-container *ngxPermissionsOnly="[isAdmin()]">
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-light"
+                                                (click)="editVersion(version.id)">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                style="margin-left: 10px" (click)="askForDeleteVersion(version.id)">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </ng-container>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button class="btn btn-secondary" (click)="backToVehicles()">
+                    {{'global.back' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

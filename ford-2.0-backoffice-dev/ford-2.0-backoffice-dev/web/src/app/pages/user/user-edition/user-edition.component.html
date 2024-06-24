@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <app-page-title title="{{'user.users' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+    
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label for="firstname">{{'user.user-edition.firstname' | translate}}</label>
+                                <input id="firstname" name="firstname" type="text" class="form-control"
+                                    formControlName="firstname" placeholder="{{'user.user-edition.firstname' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.firstname.errors}">
+                                <div *ngIf="submit && controls.firstname.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.firstname.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label for="lastname">{{'user.user-edition.lastname' | translate}}</label>
+                                <input id="lastname" name="lastname" type="text" class="form-control"
+                                    formControlName="lastname" placeholder="{{'user.user-edition.lastname' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.lastname.errors}">
+                                <div *ngIf="submit && controls.lastname.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.lastname.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label for="email">{{'user.user-edition.email' | translate}}</label>
+                                <input id="email" name="email" type="text" class="form-control" formControlName="email"
+                                    placeholder="{{'user.user-edition.email' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.email.errors}">
+                                <div *ngIf="submit && controls.email.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.email.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label for="type">{{'user.user-edition.profile' | translate}}</label>
+                                <select name="profile" formControlName="profile" class="form-select"
+                                    [ngClass]="{'is-invalid': submit && controls.profile.errors}"
+                                    [value]="selectedProfile">
+                                    <option [value]="null">{{'user.user-edition.select-profile' | translate}}</option>
+                                    <option *ngFor="let profile of profileTypes" [value]="profile">
+                                        {{'user.user-edition.' + profile | translate}}</option>
+                                </select>
+                                <div *ngIf="submit && controls.profile.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.profile.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="isCreateMode()">
+                            <div class="col-sm-6 mb-3">
+                                <label for="password">{{'user.user-edition.password' | translate}}</label>
+                                <div class="input-group auth-pass-inputgroup">
+                                    <input id="password" name="password" type="{{inputType}}" class="form-control"
+                                        formControlName="password" placeholder="{{'user.user-edition.password' | translate}}"
+                                        [ngClass]="{'is-invalid': (submit && controls.password.errors) || weakPassword}">
+                                    <button class="btn btn-light ms-0" type="button" id="password-addon"
+                                        (click)="toggleInputType()">
+                                        <i *ngIf="isInputTypePassword()" class="mdi mdi-eye-outline"></i>
+                                        <i *ngIf="isInputTypeText()" class="mdi mdi-eye-off-outline"></i>
+                                    </button>                                 
+                                    <div *ngIf="submit && controls.password.errors" class="invalid-feedback">
+                                        <span *ngIf="controls.password.errors.required">{{'global.mandatory-data' |
+                                            translate}}</span>
+                                    </div>                        
+                                </div>
+                                <div *ngIf="weakPassword">
+                                    <span style="color:#f46a6a; font-size:80%">{{'user.user-edition.weak-password' |
+                                        translate}}</span>
+                                </div>
+                                <div class="mt-3">
+                                    <span>{{'user.user-edition.password-hint' | translate}}</span>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button class="btn btn-secondary" (click)="cancel()">{{'global.cancel' |
+                    translate}}</button>
+                <button type="button" *ngIf="isEditMode()" class="btn btn-danger"
+                    (click)="askForDeleteUser()">{{'global.delete' |
+                    translate}}</button>
+                <button type="submit" class="btn btn-primary">{{'global.save' | translate}}</button>
+            </div>
+        </div>
+    </form>
+
+</div>

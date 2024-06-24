@@ -1,0 +1,161 @@
+<div class="container-fluid">
+    <app-page-title title="{{'form.forms' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>{{'form.form-list.form' | translate}}</label>
+                            <ng-select [(ngModel)]="selectedFormType" [searchable]="true"
+                                [disabled]="formTypes.length == 0" (ngModelChange)="selectedFormChange()"
+                                placeholder="{{'form.form-list.select-form-type' | translate}}">
+                                <ng-option *ngFor="let form of formTypes" [value]="form">
+                                    {{'form.form-list.' + form | translate}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && !selectedFormType">
+                        <span>
+                            {{ 'form.form-list.select-form-type' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'form.form-list.loading-forms' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && selectedFormType && (quoteFormList.length == 0 && testDriveFormList.length == 0 && newsletterFormList.length == 0)">
+                        <span>
+                            {{ 'form.form-list.form-empty' | translate }}
+                        </span>
+                    </div>
+
+                    <div *ngIf="!isGettingList && selectedFormType && quoteFormList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'form.form-list.name' | translate}}</th>
+                                    <th>{{'form.form-list.event' | translate}}</th>
+                                    <th>{{'form.form-list.vehicle' | translate}}</th>
+                                    <th>{{'form.form-list.dealership' | translate}}</th>
+                                    <th>{{'form.form-list.point-of-sale' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let quoteForm of quoteFormList">
+                                    <td>{{quoteForm.firstname + ' ' + quoteForm.lastname}}</td>
+                                    <td>{{quoteForm.eventId}}</td>
+                                    <td>{{quoteForm.vehicleId}}</td>
+                                    <td>{{quoteForm.dealershipId}}</td>
+                                    <td>{{quoteForm.pointOfSale}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngIf="!isDeleting" type="button" class="btn btn-pink"
+                                            (click)="quoteFormView(quoteForm.id)" ngbTooltip="{{'form.form-list.view-form' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div *ngIf="!isGettingList && selectedFormType && testDriveFormList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'form.form-list.name' | translate}}</th>
+                                    <th>{{'form.form-list.event' | translate}}</th>
+                                    <th>{{'form.form-list.vehicle' | translate}}</th>
+                                    <th>{{'form.form-list.vehicle-of-interest' | translate}}</th>
+                                    <th>{{'form.form-list.date-of-purchase' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let testDriveForm of testDriveFormList">
+                                    <td>{{testDriveForm.firstname + ' ' + testDriveForm.lastname}}</td>
+                                    <td>{{testDriveForm.eventId}}</td>
+                                    <td>{{testDriveForm.vehicleId}}</td>
+                                    <td>{{testDriveForm.vehicleOfInterest}}</td>
+                                    <td>{{getDateToShow(testDriveForm.dateOfPurchase)}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngIf="!isDeleting" type="button" class="btn btn-pink"
+                                            (click)="testDriveFormView(testDriveForm.id)" ngbTooltip="{{'form.form-list.view-form' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div *ngIf="!isGettingList && selectedFormType && newsletterFormList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'form.form-list.name' | translate}}</th>
+                                    <th>{{'form.form-list.event' | translate}}</th>
+                                    <th>{{'form.form-list.email' | translate}}</th>
+                                    <th>{{'form.form-list.vehicle-of-interest' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let newsletterForm of newsletterFormList">
+                                    <td>{{newsletterForm.firstname + ' ' + newsletterForm.lastname}}</td>
+                                    <td>{{newsletterForm.eventId}}</td>
+                                    <td>{{newsletterForm.email}}</td>
+                                    <td>{{newsletterForm.vehicleOfInterest}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngIf="!isDeleting" type="button" class="btn btn-pink"
+                                            (click)="newsletterFormView(newsletterForm.id)" ngbTooltip="{{'form.form-list.view-form' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

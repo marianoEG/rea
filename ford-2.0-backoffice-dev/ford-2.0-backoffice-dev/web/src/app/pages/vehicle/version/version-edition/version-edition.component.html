@@ -1,0 +1,129 @@
+<div class="container-fluid">
+    <app-page-title title="{{vehicleName + ' - ' +  ('version.versions' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label for="name">{{'version.version-edition.name' | translate}}</label>
+                                <input id="name" name="name" type="text" class="form-control" formControlName="name"
+                                    placeholder="{{'version.version-edition.name' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.name.errors}">
+                                <div *ngIf="submit && controls.name.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.name.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label for="price">{{'version.version-edition.price' | translate}}</label>
+                                <div class="d-flex">
+                                    <select name="currency" formControlName="currency"
+                                        class="form-control version-currency-select" [value]="selectedCurrency">
+                                        <option *ngFor="let currency of currencyArray" [value]="currency">
+                                            {{currency + '$'}}</option>
+                                    </select>
+                                    <input class="form-control" type="number" formControlName="price"
+                                        placeholder="{{'version.version-edition.price' | translate}}"
+                                        [ngClass]="{'is-invalid': submit && controls.price.errors}" id="price"
+                                        name="price">
+                                    <div *ngIf="submit && controls.price.errors" class="invalid-feedback">
+                                        <span *ngIf="controls.price.errors.required">{{'global.mandatory-data' |
+                                            translate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
+                                <label>{{'version.version-edition.TMA' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="TMA"
+                                    placeholder="{{'version.version-edition.TMA' | translate}}">
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label>{{'version.version-edition.SEQ' | translate}}</label>
+                                <input class="form-control" type="string" formControlName="SEQ"
+                                    placeholder="{{'version.version-edition.SEQ' | translate}}">
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label>{{'version.version-edition.model-year' | translate}}</label>
+                                <input class="form-control" type="number" formControlName="modelYear"
+                                    placeholder="{{'version.version-edition.model-year' | translate}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="d-flex align-items-end">
+                                    <ui-switch defaultBoColor="#00095b" size="small" color="#00095b"
+                                        formControlName="preLaunch" style="margin-right: 12px;">
+                                    </ui-switch>
+                                    <span class="font-size-14">{{'version.pre-launch' | translate}}</span>
+
+                                    <ui-switch defaultBoColor="#00095b" size="small" color="#00095b"
+                                        style="margin-left: 32px; margin-right: 12px;" formControlName="enabled" name="enabled">
+                                    </ui-switch>
+                                    <span class="font-size-14">{{'version.enable' | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isEditMode() || isViewMode()" class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{'version.version-edition.features' | translate}}</h4>
+                        <hr>
+                        <div class="row mt-5" *ngFor="let group of featureGroupsList">
+                            <h5 class="form-label text-center">{{group.name}}</h5>
+
+                            <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                                *ngIf="!group.features || group.features.length == 0">
+                                <span>{{ 'version.version-edition.no-feature-to-show' | translate }} </span>
+                            </div>
+
+                            <div *ngIf="group.features.length > 0" style="margin-top:20px">
+                                <div class="row" *ngFor="let feature of group.features">
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <label class="mt-3 d-flex justify-content-center"> {{feature.name}}</label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="form-control w-50" type="string" maxlength="2000"
+                                            [(ngModel)]="feature.valueToWork" [ngModelOptions]="{standalone: true}"
+                                            [disabled]="isViewMode()"
+                                            placeholder="{{'version.version-edition.value' | translate}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-secondary" type="button" (click)="cancel()">{{'global.cancel' |
+                translate}}</button>
+            <button *ngIf="isEditMode()" type="button" class="btn btn-danger"
+                (click)="askForDeleteVersion()">{{'global.delete' |
+                translate}}</button>
+            <button *ngIf="!isViewMode()" type="submit" class="btn btn-primary">{{'global.save' | translate}}</button>
+        </div>
+    </form>
+
+</div>

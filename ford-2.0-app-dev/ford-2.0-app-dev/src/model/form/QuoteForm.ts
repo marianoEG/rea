@@ -1,0 +1,64 @@
+import { ContactPreferenceEnum, DocumentTypeEnum } from '../../utils/constants';
+export interface QuoteForm {
+    id?: number;
+    eventId?: number;
+    eventName?: string;
+    eventCode?: string;
+    dealershipId?: number;
+    dealershipName?: string;
+    dealershipCode?: string;
+    provinceId?: number;
+    provinceName?: string;
+    localityId?: number;
+    localityName?: string;
+    vehicleId?: number;
+    vehicleName?: string;
+    vehicleVersionId?: number;
+    vehicleVersionName?: string;
+    vehicleModelYear?: string;
+    vehicleTMA?: string;
+    vehicleSEQ?: string;
+    firstname?: string;
+    lastname?: string;
+    documentType?: DocumentTypeEnum;
+    documentNumber?: string;
+    email?: string;
+    pointOfSale?: string;
+    phoneArea?: string;
+    phone?: string;
+    contactPreference?: ContactPreferenceEnum;
+    receiveInformation?: boolean;
+    acceptConditions?: boolean;
+    createdOn?: Date;
+    modifiedOn?: Date;
+    isSynchronized?: boolean;
+    syncDate?: Date;
+    syncFailed?: boolean;
+}
+
+export interface QuoteFormToSync {
+    origen: string | null;
+    suborigen: string | null;
+    campaing_id: string | null;
+    modelo_desc: string | null;
+    version_id: string | null;
+    version_desc: string | null;
+    version_my: string | null;
+    provincia_desc: string | null;
+    localidad_desc: string | null;
+    concesionario_id: string | null;
+    concesionario_desc: string | null;
+    nombre: string | null;
+    primer_apellido: string | null;
+    tipo_doc: string | null;
+    nro_doc: string | null;
+    email: string | null;
+    cod_area_tel: string | null;
+    nro_tel: string | null;
+    evento_id: string | null;
+    evento_desc: string | null;
+    canal_contacto_pref: string | null;
+    optin_recibe_info: string | null;
+    optin_terminos: string | null;
+    submission_Date: string | null;
+}

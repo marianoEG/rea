@@ -1,0 +1,143 @@
+<div class="container-fluid">
+    <app-page-title title="{{'dealership.dealerships' | translate}}" [breadcrumbItems]="breadCrumbItems">
+    </app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label for="name" class="form-label">{{'dealership.dealership-edition.name' | translate}}</label>
+                                <input id="name" name="name" type="text" class="form-control" formControlName="name"
+                                    [ngClass]="{'is-invalid': submit && controls.name.errors}"
+                                    placeholder="{{'dealership.dealership-edition.name' | translate}}">
+                                <div *ngIf="submit && controls.name.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.name.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="code" class="form-label">{{'dealership.dealership-edition.code' | translate}}</label>
+                                <input id="code" name="code" type="text" class="form-control" formControlName="code"
+                                    [ngClass]="{'is-invalid': submit && controls.code.errors}"
+                                    placeholder="{{'dealership.dealership-edition.code' | translate}}">
+                                <div *ngIf="submit && controls.code.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.code.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label form="select-form" class="form-label">{{'dealership.dealership-edition.province' |
+                                    translate}}</label>
+                                <ng-select formControlName="province" [searchable]="true"
+                                    placeholder="{{'dealership.dealership-edition.select-province' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.province.errors}"
+                                    (change)="onChangeProvince()">
+                                    <ng-option *ngFor="let province of provinceList" [value]="province">
+                                        {{province.name}}
+                                    </ng-option>
+                                </ng-select>
+                                <div *ngIf="submit && controls.province.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.province.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label form="select-form" class="form-label">{{'dealership.dealership-edition.city' |
+                                    translate}}</label>
+                                <ng-select formControlName="city" [searchable]="true" 
+                                    placeholder="{{'dealership.dealership-edition.select-city' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.city.errors}">
+                                    <ng-option *ngFor="let city of cityList" [value]="city">
+                                        {{city.name}}
+                                    </ng-option>
+                                </ng-select>
+                                <div *ngIf="submit && controls.city.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.city.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="lat" class="form-label">{{'dealership.dealership-edition.latitude' | translate}}</label>
+                                <input id="lat" name="lat" type="number" class="form-control"
+                                    formControlName="lat"
+                                    placeholder="{{'dealership.dealership-edition.latitude' | translate}}">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="long" class="form-label">{{'dealership.dealership-edition.longitude' | translate}}</label>
+                                <input id="long" name="long" type="number" class="form-control"
+                                    formControlName="long"
+                                    placeholder="{{'dealership.dealership-edition.longitude' | translate}}">
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label for="streetNameAndNumber" class="form-label">{{'dealership.dealership-edition.street-name-and-number' | translate}}</label>
+                                <input id="streetNameAndNumber" name="streetNameAndNumber" type="string" class="form-control"
+                                    formControlName="streetNameAndNumber"
+                                    placeholder="{{'dealership.dealership-edition.street-name-and-number' | translate}}">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="postalCode" class="form-label">{{'dealership.dealership-edition.postal-code' | translate}}</label>
+                                <input id="postalCode" name="postalCode" type="string" class="form-control"
+                                    formControlName="postalCode"
+                                    placeholder="{{'dealership.dealership-edition.postal-code' | translate}}">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="phone1" class="form-label">{{'dealership.dealership-edition.phone-1' | translate}}</label>
+                                <input id="phone1" name="phone1" type="string" class="form-control"
+                                    formControlName="phone1"
+                                    placeholder="{{'dealership.dealership-edition.phone-1' | translate}}">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label for="phone2" class="form-label">{{'dealership.dealership-edition.phone-2' | translate}}</label>
+                                <input id="phone2" name="phone2" type="string" class="form-control"
+                                    formControlName="phone2"
+                                    placeholder="{{'dealership.dealership-edition.phone-2' | translate}}">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="dealerCode" class="form-label">{{'dealership.dealership-edition.dealer-code' | translate}}</label>
+                                <input id="dealerCode" name="dealerCode" type="string" class="form-control"
+                                    formControlName="dealerCode"
+                                    placeholder="{{'dealership.dealership-edition.dealer-code' | translate}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap gap-2 justify-content-end">
+                    <button type="button" class="btn btn-secondary" (click)="cancel()">{{'global.cancel' |
+                        translate}}</button>
+                    <button type="button" *ngIf="isEditMode()" class="btn btn-danger"
+                        (click)="askForDeleteDealership()">{{'global.delete' |
+                        translate}}</button>
+                    <button type="submit" *ngIf="!isViewMode()" class="btn btn-primary">{{'global.save' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

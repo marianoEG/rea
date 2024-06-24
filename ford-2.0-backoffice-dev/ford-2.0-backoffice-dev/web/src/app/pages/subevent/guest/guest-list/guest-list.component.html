@@ -1,0 +1,157 @@
+<div class="container-fluid">
+    <app-page-title title="{{subEventName + ' - ' +  ('guest.guests' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <label form="select-form">{{'guest.guest-list.changed-by-qr-scanner' | translate}}</label>
+                            <ng-select [(ngModel)]="changedByQrscanner" [searchable]="true"
+                                (ngModelChange)="qrScannerFilterChanged()"
+                                placeholder="{{'global.select' | translate}}">
+                                <ng-option [value]="true">Si</ng-option>
+                                <ng-option [value]="false">No</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-3">
+                            <label form="select-form">{{'subevent.subevent-list.guest' | translate}}</label>
+                            <div class="app-search d-block p-0">
+                                <div class="position-relative">
+                                    <input #inputSearch [(ngModel)]="searchText" name="textSearch" type="text"
+                                        class="form-control" placeholder="{{'header.search' | translate}}">
+                                    <span class="bx bx-search-alt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end align-items-center">
+                            <!-- Send To SaleForce -->
+                            <button type="button" class="btn btn-primary" (click)="sendToSaleForce()"
+                                [disabled]="isGettingList || isDeleting || isSendingToSaleForce">
+                                <span *ngIf="!isSendingToSaleForce">{{'guest.guest-list.send_to_sale_force' |
+                                    translate}}</span>
+                                <div *ngIf="isSendingToSaleForce" class="spinner-border spinner-border-sm"
+                                    role="status"></div>
+                            </button>
+                            <!-- Divider -->
+                            <div class="btn-divider"></div>
+                            <!-- Divider -->
+                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                (click)="askForDeleteGuests()" ngbTooltip="{{'global.delete-all' | translate}}"
+                                [disabled]="!guestsList || guestsList.length == 0">
+                                <i class="bx bx-trash align-middle"></i>
+                            </button>
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                style="transform: rotate(180deg); margin-left:5px"
+                                ngbTooltip="{{'guest.guest-list.import' | translate}}" (click)="importGuestList()">
+                                <i class="bx bxs-download align-middle"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" style="margin-left:5px"
+                                ngbTooltip="{{'guest.guest-list.export' | translate}}" (click)="exportGuests()">
+                                <i class="bx bxs-download align-middle"></i>
+                            </button>
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                ngbTooltip="{{'global.create' | translate}}" style="margin-left: 5px;"
+                                (click)="createGuest()">
+                                <i class="bx bx-plus align-middle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'guest.guest-list.loading-guests' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && (!guestsList || guestsList.length == 0)">
+                        <span>
+                            {{ 'guest.guest-list.guest-empty' | translate }}
+                        </span>
+                    </div>
+
+
+                    <div *ngIf="!isGettingList && guestsList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'guest.guest-list.name' | translate}}</th>
+                                    <th>{{'guest.guest-list.type' | translate}}</th>
+                                    <th>{{'guest.guest-list.state' | translate}}</th>
+                                    <th>{{'guest.guest-list.changed-by-qr-scanner' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let guest of guestsList">
+                                    <td>{{guest.lastname + ' ' + guest.firstname}}</td>
+                                    <td>{{'guest.guest-edition.' + guest.type | translate}}</td>
+                                    <td>{{guest.state ? ('guest.guest-edition.' + guest.state | translate) : '-'}}</td>
+                                    <td>{{(guest.changedByQrscanner ? 'global.yes' : 'global.no') | translate}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" style="margin-right: 10px" role="status"
+                                            *ngIf="isDeleting"></div>
+
+                                        <button type="button" class="btn btn-light" style="margin-right: 10px"
+                                            ngbTooltip="{{'global.download-qr-code' | translate}}"
+                                            (click)="downloadQR(guest)">
+                                            <i class="bx bx-barcode align-middle"></i>
+                                        </button>
+
+                                        <button *ngxPermissionsOnly="[isReadOnly()]" type="button"
+                                            class="btn btn-primary" (click)="viewGuest(guest.id)"
+                                            ngbTooltip="{{'global.view' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                        <ng-container *ngxPermissionsOnly="[isAdmin()]">
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-light"
+                                                ngbTooltip="{{'global.edit' | translate}}" style="margin-right: 10px"
+                                                (click)="editGuest(guest.id)">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                ngbTooltip="{{'global.delete' | translate}}"
+                                                (click)="askForDeleteGuest(guest.id)">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </ng-container>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-end mt-3">
+                            <label>{{getGuestNumberText()}}</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button class="btn btn-secondary" (click)="backToSubevents()">
+                    {{'global.back' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

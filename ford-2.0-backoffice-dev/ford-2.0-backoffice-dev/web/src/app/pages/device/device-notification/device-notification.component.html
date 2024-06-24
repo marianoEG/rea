@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <app-page-title title="{{'device.device-detail.notifications.title' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row">
+                            <div class="col-sm-8 mt-3">
+                                <label for="message">{{'device.device-detail.notifications.message' | translate}}</label>
+                                <textarea  id="message" name="message" type="text" maxlength="500" class="form-control" style="height: 150px;" formControlName="message"
+                                    [ngClass]="{'is-invalid': submit && controls.message.errors}" (ngModelChange)="onMessageChange()"></textarea>
+                                <b class="small float-end">{{characterCount}} / 500</b>
+                                <div *ngIf="submit && controls.message.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.message.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button class="btn btn-secondary" (click)="cancel()">{{'global.cancel' |
+                    translate}}</button>
+                <button type="submit" class="btn btn-primary">{{'global.save' |
+                    translate}}</button>
+            </div>
+
+        </div>
+    </form>
+</div>

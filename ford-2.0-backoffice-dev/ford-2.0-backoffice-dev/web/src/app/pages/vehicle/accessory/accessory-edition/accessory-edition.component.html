@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <app-page-title title="{{vehicleName + ' - ' +  ('vehicle-accessory.vehicle-accessories' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row">
+                            <div class="col-sm-6 mt-3">
+                                <label for="name"
+                                    class="form-label">{{'vehicle-accessory.vehicle-accessory-edition.name' |
+                                    translate}}</label>
+                                <input id="name" name="name" type="text" class="form-control" formControlName="name"
+                                    placeholder="{{'vehicle-accessory.vehicle-accessory-edition.name' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.name.errors}">
+                                <div *ngIf="submit && controls.name.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.name.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+
+                                <label for="partNumber"
+                                    class="form-label mt-3">{{'vehicle-accessory.vehicle-accessory-edition.part-number'
+                                    |
+                                    translate}}</label>
+                                <input id="partNumber" name="partNumber" type="string" class="form-control"
+                                    formControlName="partNumber"
+                                    placeholder="{{'vehicle-accessory.vehicle-accessory-edition.part-number' | translate}}">
+
+
+                                <label for="modelFor"
+                                    class="form-label mt-3">{{'vehicle-accessory.vehicle-accessory-edition.model-to-apply'
+                                    |
+                                    translate}}</label>
+                                <input id="modelFor" name="modelFor" type="text" class="form-control"
+                                    formControlName="modelFor"
+                                    placeholder="{{'vehicle-accessory.vehicle-accessory-edition.model-to-apply' | translate}}">
+
+                                <label for="observation"
+                                    class="form-label mt-3">{{'vehicle-accessory.vehicle-accessory-edition.observation'
+                                    |
+                                    translate}}</label>
+                                <input id="observation" name="observation" type="text" class="form-control"
+                                    formControlName="observation"
+                                    placeholder="{{'vehicle-accessory.vehicle-accessory-edition.observation' | translate}}">
+
+                                <label for="description"
+                                    class="form-label mt-3">{{'vehicle-accessory.vehicle-accessory-edition.description'
+                                    |
+                                    translate}}</label>
+                                <textarea class="form-control" formControlName="description"
+                                    placeholder="{{'vehicle-accessory.vehicle-accessory-edition.description' | translate}}"
+                                    rows="8">
+                                </textarea>
+                            </div>
+
+                            <div class="col-sm-6 mt-3 text-center">
+                                <label class="form-label">{{'vehicle-accessory.vehicle-accessory-edition.image' |
+                                    translate}}</label>
+
+                                <ng-container *ngIf="!currentAccessory.image">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div class="dropzone dropzone-primary mb-3 mt-1 mb-3 mt-1 d-flex justify-content-center align-items-center rounded-10"
+                                            [dropzone]="accessoryDropzone" (success)="getDropzoneResponse($event)"
+                                            [disabled]="isViewMode()" style="width: 200px; height: 250px;">
+                                            <div
+                                                class="dz-message needsclick d-flex align-items-center justify-content-center">
+                                                <h4>{{'vehicle-accessory.vehicle-accessory-edition.upload-image' |
+                                                    translate}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                                <div *ngIf="currentAccessory.image">
+                                    <div class="row justify-content-center">
+                                        <img class="rounded-20" src="{{currentAccessory.image}}"
+                                            style="width: 200px; height: 250px; object-fit: contain;">
+                                    </div>
+                                    <div *ngIf="!isViewMode()" class="mb-3 mt-3">
+                                        <button class="btn btn-danger" style="cursor:pointer" (click)="removeImage()">
+                                            {{'vehicle-accessory.vehicle-accessory-edition.remove-image' | translate}}
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-secondary" (click)="cancel()">{{'global.cancel' |
+                translate}}</button>
+            <button *ngIf="isEditMode()" class="btn btn-danger"
+                (click)="askForDeleteVehicleAccessory()">{{'global.delete' |
+                translate}}</button>
+            <button *ngIf="!isViewMode()" type="submit" class="btn btn-primary">{{'global.save' | translate}}</button>
+        </div>
+    </form>
+
+</div>

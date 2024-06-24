@@ -1,0 +1,100 @@
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card overflow-hidden">
+          <div class="bg-primary login-title-container">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center p-4">
+                <img [src]="'./assets/images/ford-logo-2.png'" style="height: 125px; width: 265px;">
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div class="p-2">
+              <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <div class="mb-3">
+                  <label for="email">Email</label>
+                  <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email"
+                    [ngClass]="{ 'is-invalid': submitted && loginForm.controls.email.errors }" />
+                  <div *ngIf="submitted && loginForm.controls.email.errors" class="invalid-feedback">
+                    <div *ngIf="loginForm.controls.email.errors.required">{{'auth.login.email_is_required' | translate}}</div>
+                    <div *ngIf="loginForm.controls.email.errors.email">{{'auth.login.invalid_email' | translate}}</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password">{{'auth.login.password' | translate}}</label>
+                  <div class="input-group auth-pass-inputgroup">
+                    <input type="{{inputType}}" class="form-control" formControlName="password"
+                      placeholder="{{'auth.login.password' | translate}}"
+                      [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }" aria-label="Password"
+                      aria-describedby="password-addon">
+                
+                    <button class="btn btn-light ms-0" type="button" id="password-addon" (click)="toggleInputType()">
+                      <i *ngIf="isInputTypePassword()" class="mdi mdi-eye-outline"></i>
+                      <i *ngIf="isInputTypeText()" class="mdi mdi-eye-off-outline"></i>
+                    </button>
+                    <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
+                      <span *ngIf="loginForm.controls.password.errors.required">{{'auth.login.password_is_required' | translate}}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="remember-check">
+                  <label class="form-check-label" for="remember-check">
+                    {{'auth.login.remember_me' | translate}}
+                  </label>
+                </div> -->
+
+                <div class="mt-3 d-grid">
+                  <button class="btn btn-rounded btn-primary" type="submit">{{'auth.login.log_in' | translate}}</button>
+                </div>
+                <!-- <div class="mt-4 text-center">
+                  <h5 class="font-size-14 mb-3">Sign in with</h5>
+
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
+                        <i class="mdi mdi-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
+                        <i class="mdi mdi-google"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div> -->
+                <!-- <div class="mt-4 text-center">
+                  <a routerLink="/account/reset-password" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Forgot
+                    your
+                    password?</a>
+                </div> -->
+              </form>
+            </div>
+
+          </div>
+        </div>
+        <!-- <div class="mt-5 text-center">
+          <p>Don't have an account ? <a routerLink="/account/signup" class="fw-medium text-primary"> Signup
+              now
+            </a> </p>
+          <p>© {{year}} Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- end container -->
+</div>
+<!-- end page -->

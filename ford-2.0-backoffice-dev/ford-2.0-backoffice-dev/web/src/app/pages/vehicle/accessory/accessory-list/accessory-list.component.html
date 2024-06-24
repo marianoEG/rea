@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <app-page-title title="{{vehicleName + ' - ' +  ('vehicle-accessory.vehicle-accessories' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                (click)="createVehicleAccessory()">
+                                <i class="bx bx-plus align-middle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'vehicle-accessory.vehicle-accessory-list.loading-vehicle-accessories' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && (!accessoryList || accessoryList.length == 0)">
+                        <span>
+                            {{ 'vehicle-accessory.vehicle-accessory-list.vehicle-accessory-empty' | translate }}
+                        </span>
+                    </div>
+
+
+                    <div *ngIf="!isGettingList && accessoryList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="table-image-cell"></th>
+                                    <th>{{'vehicle-accessory.vehicle-accessory-list.name' | translate}}</th>
+                                    <th>{{'vehicle-accessory.vehicle-accessory-list.part-number' | translate}}</th>
+                                    <th>{{'vehicle-accessory.vehicle-accessory-list.model-to-apply' | translate}}</th>
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let accessory of accessoryList">
+                                    <td class="table-image-cell">
+                                        <img *ngIf="!accessory.image" class="rounded-circle" style="object-fit: cover;"
+                                            [src]="'./assets/images/car.png'" width="30" height="30">
+                                        <img *ngIf="accessory.image" class="rounded-circle" style="object-fit: cover;" [src]="accessory.image"
+                                            width="30" height="30">
+                                    </td>
+                                    <td>{{accessory.name}}</td>
+                                    <td>{{accessory.partNumber}}</td>
+                                    <td>{{accessory.modelFor}}</td>
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngxPermissionsOnly="[isReadOnly()]" type="button"
+                                            class="btn btn-primary" style="margin-left: 10px"
+                                            (click)="viewVehicleAccessory(accessory.id)"
+                                            ngbTooltip="{{'global.view' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                        <ng-container *ngxPermissionsOnly="[isAdmin()]">
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-light"
+                                                (click)="editVehicleAccessory(accessory.id)">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                style="margin-left: 10px"
+                                                (click)="askForDeleteVehicleAccessory(accessory.id)">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </ng-container>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <button class="btn btn-secondary" (click)="backToVehicles()">
+                    {{'global.back' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

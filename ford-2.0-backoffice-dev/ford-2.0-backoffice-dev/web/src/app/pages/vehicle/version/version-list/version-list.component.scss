@@ -1,0 +1,24 @@
+select.currency,
+input.currency {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+input.currency {
+    width: 125px;
+}
+
+input.currency::-webkit-outer-spin-button,
+input.currency::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input.currency[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.middle {
+    vertical-align: middle;
+}

@@ -1,0 +1,182 @@
+<div class="container-fluid">
+    <app-page-title title="{{'general-configuration.general-configuration' | translate}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.sending' | translate}}</span>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title mb-5">{{'general-configuration.general-configuration' | translate}}</h4>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="loading || isSaving">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2" *ngIf="loading">{{ 'general-configuration.loading-configs' | translate
+                            }}</span>
+                        <span class="mt-2" *ngIf="isSaving">{{ 'general-configuration.saving-configs' | translate
+                            }}</span>
+                    </div>
+
+                    <ng-container *ngIf="!loading && !isSaving">
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.demarcation-owner-file' |
+                                translate}}</label>
+                            <input *ngIf="!declarationOwner" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.DEMARCATION_OWNER)">
+                            <div *ngIf="declarationOwner" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label" (click)="showPDFFile(pdfModal, declarationOwner)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.DEMARCATION_OWNER)}}
+                                    </label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.DEMARCATION_OWNER)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.demarcation-owner-in-caravan-file' |
+                                translate}}</label>
+                            <input *ngIf="!declarationOwnerInCaravan" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.DEMARCATION_OWNER_IN_CARAVAN)">
+                            <div *ngIf="declarationOwnerInCaravan" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label"
+                                    (click)="showPDFFile(pdfModal, declarationOwnerInCaravan)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.DEMARCATION_OWNER_IN_CARAVAN)}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.DEMARCATION_OWNER_IN_CARAVAN)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.demarcation-ford-file' |
+                                translate}}</label>
+                            <input *ngIf="!declarationFord" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.DEMARCATION_FORD)">
+                            <div *ngIf="declarationFord" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label" (click)="showPDFFile(pdfModal, declarationFord)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.DEMARCATION_FORD)}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.DEMARCATION_FORD)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.test-drive-terms-file' |
+                                translate}}</label>
+                            <input *ngIf="!testDriveTerms" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.TEST_DRIVE_TERMS_URL)">
+                            <div *ngIf="testDriveTerms" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label" (click)="showPDFFile(pdfModal, testDriveTerms)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.TEST_DRIVE_TERMS_URL)}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.TEST_DRIVE_TERMS_URL)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.newsletter-terms-file' |
+                                translate}}</label>
+                            <input *ngIf="!newsletterTerms" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.NEWSLETTER_TERMS_URL)">
+                            <div *ngIf="newsletterTerms" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label" (click)="showPDFFile(pdfModal, newsletterTerms)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.NEWSLETTER_TERMS_URL)}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.NEWSLETTER_TERMS_URL)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label class="font-size-14">{{'general-configuration.quote-terms-file' | translate}}</label>
+                            <input *ngIf="!quoteTerms" class="form-control" type="file" id="formFile"
+                                (change)="getFile($event, GeneralConfigurationsKeysEnum.QUOTE_TERMS_URL)">
+                            <div *ngIf="quoteTerms" class="row d-flex align-items-center">
+                                <div class="col-6 pdf-preview-label" (click)="showPDFFile(pdfModal, quoteTerms)">
+                                    <i style="font-size: 80px;" class=" bx bxs-file-pdf align-middle"></i>
+                                    <label
+                                        class="form-label font-size-12">{{nameToShow(GeneralConfigurationsKeysEnum.QUOTE_TERMS_URL)}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="resetConfigValue(GeneralConfigurationsKeysEnum.QUOTE_TERMS_URL)">
+                                        {{'general-configuration.load-another-file' | translate}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5 mb-5" />
+                        <div>
+                            <label>{{'general-configuration.contact-data' | translate}}</label>
+                            <ckeditor class="terms-and-conditions-editor" [editor]="Editor"
+                                data="{{configurations[contactDataIndex].value}}"
+                                [(ngModel)]="configurations[contactDataIndex].value">
+                            </ckeditor>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 justify-content-end">
+        <button type="button" class="btn btn-primary" (click)="sendConfigurations()">
+            {{'global.send' | translate}}
+        </button>
+    </div>
+</div>
+
+<!---------------------------------------- PDF MODAL ----------------------------------------------------------------->
+
+<ng-template #pdfModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'general-configuration.pdf-viewer' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body d-flex justify-content-center">
+        <pdf-viewer [src]="pdfToShow" [render-text]="true" [original-size]="false" style="width: 400px; height: 500px">
+        </pdf-viewer>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">
+            {{'global.finish' | translate}}</button>
+    </div>
+</ng-template>

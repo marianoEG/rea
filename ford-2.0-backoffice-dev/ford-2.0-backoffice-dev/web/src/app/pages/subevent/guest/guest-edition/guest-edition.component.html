@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <app-page-title title="{{subEventName + ' - ' +  ('guest.guests' | translate)}}"
+        [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+
+                        <div class="row mt-3">
+                            <div class="col-sm-3 mb-3">
+                                <label for="firstname">{{'guest.guest-edition.firstname' | translate}}</label>
+                                <input id="firstname" name="firstname" type="text" class="form-control"
+                                    formControlName="firstname"
+                                    placeholder="{{'guest.guest-edition.firstname' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.firstname.errors}">
+                                <div *ngIf="submit && controls.firstname.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.firstname.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="lastname">{{'guest.guest-edition.lastname' | translate}}</label>
+                                <input id="lastname" name="lastname" type="text" class="form-control"
+                                    formControlName="lastname"
+                                    placeholder="{{'guest.guest-edition.lastname' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.lastname.errors}">
+                                <div *ngIf="submit && controls.lastname.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.lastname.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label form="select-form">{{'guest.guest-edition.type' |
+                                    translate}}</label>
+                                <ng-select formControlName="type" [searchable]="true"
+                                    placeholder="{{'guest.guest-edition.type' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.type.errors}">
+                                    <ng-option *ngFor="let type of types" [value]="type">
+                                        {{'guest.guest-edition.' + type | translate}}
+                                    </ng-option>
+                                </ng-select>
+                                <div *ngIf="submit && controls.type.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.type.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label form="select-form">{{'guest.guest-edition.state' |
+                                    translate}}</label>
+                                <ng-select formControlName="state" [searchable]="true"
+                                    placeholder="{{'guest.guest-edition.state' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.state.errors}">
+                                    <ng-option *ngFor="let state of states" [value]="state">
+                                        {{'guest.guest-edition.' + state | translate}}
+                                    </ng-option>
+                                </ng-select>
+                                <div *ngIf="submit && controls.state.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.state.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 mb-3">
+                                <label for="email">{{'guest.guest-edition.email' | translate}}</label>
+                                <input id="email" name="email" type="email" class="form-control" formControlName="email"
+                                    placeholder="{{'guest.guest-edition.email' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.email.errors}">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="phoneNumber">{{'guest.guest-edition.phone' | translate}}</label>
+                                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+                                    formControlName="phoneNumber"
+                                    placeholder="{{'guest.guest-edition.phone' | translate}}">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="type">{{'guest.guest-edition.dni' | translate}}</label>
+                                <input class="form-control" type="text" formControlName="documentNumber"
+                                    placeholder="{{'guest.guest-edition.dni' | translate}}" id="documentNumber"
+                                    name="documentNumber">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="carLicencePlate">{{'guest.guest-edition.licence' | translate}}</label>
+                                <input id="carLicencePlate" name="carLicencePlate" type="text" class="form-control"
+                                    formControlName="carLicencePlate"
+                                    placeholder="{{'guest.guest-edition.licence' | translate}}">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-3 mb-3">
+                                <label for="companionReference">{{'guest.guest-edition.companion-reference' |
+                                    translate}}</label>
+                                <input id="companionReference" name="companionReference" type="text"
+                                    class="form-control" formControlName="companionReference"
+                                    placeholder="{{'guest.guest-edition.companion-reference' | translate}}">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="zone">{{'guest.guest-edition.zone' | translate}}</label>
+                                <input class="form-control" type="text" formControlName="zone"
+                                    placeholder="{{'guest.guest-edition.zone' | translate}}" id="zone" name="zone">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="observations1">{{'guest.guest-edition.observations1' | translate}}</label>
+                                <textarea type="text" class="form-control" formControlName="observations1"
+                                    placeholder="{{'guest.guest-edition.observations1' | translate}}"></textarea>
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="observations2">{{'guest.guest-edition.observations2' | translate}}</label>
+                                <textarea type="text" class="form-control" formControlName="observations2"
+                                    placeholder="{{'guest.guest-edition.observations2' | translate}}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 mb-3">
+                                <label for="observations3">{{'guest.guest-edition.observations3' | translate}}</label>
+                                <textarea class="form-control" type="text" formControlName="observations3"
+                                    placeholder="{{'guest.guest-edition.observations3' | translate}}"></textarea>
+                            </div>
+
+                            <h4 class="card-title mt-2">{{'global.test-drive-form' | translate}}</h4>
+
+                            <div class="col-sm-3 mb-3">
+                                <label for="preferenceDate">{{'guest.guest-edition.date' | translate}}</label>
+                                <input class="form-control" type="date" formControlName="preferenceDate"
+                                    placeholder="{{'guest.guest-edition.date' | translate}}" />
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="preferenceHour">{{'guest.guest-edition.hour' | translate}}</label>
+                                <input class="form-control" type="time" formControlName="preferenceHour"
+                                    placeholder="{{'guest.guest-edition.hour' | translate}}" />
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <label for="preferenceVehicle">{{'guest.guest-edition.vehicle' | translate}}</label>
+                                <ng-select type="preferenceVehicle"
+                                    formControlName="preferenceVehicle"
+                                    placeholder="{{'guest.guest-edition.vehicle' | translate}}">
+                                    <ng-option *ngFor="let vehicle of vehicleList" [value]="vehicle.name">
+                                        {{vehicle.name}}
+                                    </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column" *ngIf="this.currentGuest && this.currentGuest.dataToScan">
+                            <img [src]="qrUrl" width="200" />
+                            <button class="btn btn-secondary btn-download-qr" (click)="downloadQR()">
+                                {{'global.download-qr-code' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-secondary" (click)="cancel()">
+                {{'global.cancel' | translate}}
+            </button>
+            <button *ngIf="isEditMode()" class="btn btn-danger" (click)="askForDeleteGuest()">
+                {{'global.delete' | translate}}
+            </button>
+            <button type="submit" class="btn btn-primary" *ngIf="!isViewMode()">
+                {{'global.save' | translate}}
+            </button>
+        </div>
+    </form>
+
+</div>

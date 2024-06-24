@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FordEvents", "FordEvents.csproj", "{739A62C9-B949-435D-AB05-A757A77CCF7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FordEvents.Common", "..\FordEvents.Common\FordEvents.Common.csproj", "{06DBF62C-207C-4E65-97F4-8A82C99E0A80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FordEvents.Model", "..\FordEvents.Model\FordEvents.Model.csproj", "{AF54529B-16B9-416E-A499-4A54870F0132}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FordEvents.Services", "..\FordEvents.Services\FordEvents.Services.csproj", "{22B8F904-3AEC-4106-8461-95F056A6F4CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FordEvents.ApiInvoker", "..\FordEvents.ApiInvoker\FordEvents.ApiInvoker.csproj", "{D38F5C01-1761-43CD-BB62-0878CE22BFA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FordEvents.Test", "..\FordEvents.Test\FordEvents.Test.csproj", "{1BBFF591-06C1-4BE5-9559-1AAF29364248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{739A62C9-B949-435D-AB05-A757A77CCF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{739A62C9-B949-435D-AB05-A757A77CCF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{739A62C9-B949-435D-AB05-A757A77CCF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{739A62C9-B949-435D-AB05-A757A77CCF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DBF62C-207C-4E65-97F4-8A82C99E0A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DBF62C-207C-4E65-97F4-8A82C99E0A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DBF62C-207C-4E65-97F4-8A82C99E0A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DBF62C-207C-4E65-97F4-8A82C99E0A80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF54529B-16B9-416E-A499-4A54870F0132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF54529B-16B9-416E-A499-4A54870F0132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF54529B-16B9-416E-A499-4A54870F0132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF54529B-16B9-416E-A499-4A54870F0132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B8F904-3AEC-4106-8461-95F056A6F4CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B8F904-3AEC-4106-8461-95F056A6F4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B8F904-3AEC-4106-8461-95F056A6F4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B8F904-3AEC-4106-8461-95F056A6F4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38F5C01-1761-43CD-BB62-0878CE22BFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38F5C01-1761-43CD-BB62-0878CE22BFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38F5C01-1761-43CD-BB62-0878CE22BFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38F5C01-1761-43CD-BB62-0878CE22BFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BBFF591-06C1-4BE5-9559-1AAF29364248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBFF591-06C1-4BE5-9559-1AAF29364248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBFF591-06C1-4BE5-9559-1AAF29364248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBFF591-06C1-4BE5-9559-1AAF29364248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7D6258E-2AB7-4214-A1F7-B47A32E76DEA}
+	EndGlobalSection
+EndGlobal

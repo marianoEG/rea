@@ -1,0 +1,136 @@
+<div class="container-fluid">
+    <app-page-title title="{{'dealership.dealerships' | translate}}" [breadcrumbItems]="breadCrumbItems">
+    </app-page-title>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <label form="select-form">{{'dealership.dealership-list.province' | translate}}</label>
+                            <ng-select [(ngModel)]="selectedProvince" [searchable]="true"
+                                [disabled]="provinceList.length == 0" (ngModelChange)="onChangeProvince()"
+                                placeholder="{{'dealership.dealership-list.select-province' | translate}}">
+                                <ng-option *ngFor="let province of provinceList" [value]="province">
+                                    {{province.name}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-4">
+                            <label form="select-form">{{'dealership.dealership-list.city' | translate}}</label>
+                            <ng-select [(ngModel)]="selectedCity" [searchable]="true"
+                                [disabled]="!selectedProvince || cityList.length == 0" (ngModelChange)="onChangeCity()"
+                                placeholder="{{'dealership.dealership-list.select-city' | translate}}">
+                                <ng-option *ngFor="let city of cityList" [value]="city">
+                                    {{city.name}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end align-items-center">
+                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                ngbTooltip="{{'global.delete-all' | translate}}" (click)="askForDeleteDealerships()">
+                                <i class="bx bx-trash align-middle"></i>
+                            </button>
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                style="transform: rotate(180deg); margin-left:5px"
+                                ngbTooltip="{{'dealership.dealership-list.import' | translate}}"
+                                (click)="importDealerships()">
+                                <i class="bx bxs-download align-middle"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" style="margin-left:5px"
+                                ngbTooltip="{{'dealership.dealership-list.export' | translate}}"
+                                (click)="exportDealerships()">
+                                <i class="bx bxs-download align-middle"></i>
+                            </button>
+                            <button *ngxPermissionsOnly="[isAdmin()]" type="button" class="btn btn-primary"
+                                style="margin-left:5px" ngbTooltip="{{'global.create' | translate}}"
+                                (click)="createDealership()">
+                                <i class="bx bx-plus align-middle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="isGettingList">
+                        <div class="spinner-border" role="status"></div>
+                        <span class="mt-2">
+                            {{ 'dealership.dealership-list.loading-dealerships' | translate }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                        *ngIf="!isGettingList && (!dealershipList || dealershipList.length == 0)">
+                        <span>
+                            {{ 'dealership.dealership-list.dealership-empty' | translate }}
+                        </span>
+                    </div>
+
+                    <div *ngIf="!isGettingList && dealershipList.length > 0" class="table-responsive"
+                        style="margin-top:20px">
+                        <table class="table mb-0">
+
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>{{'dealership.dealership-list.name' | translate}}</th>
+                                    <td>{{'dealership.dealership-list.code' | translate}}</td>
+                                    <th>{{'dealership.dealership-list.province' | translate}}</th>
+                                    <td>{{'dealership.dealership-list.street-name-and-number' | translate}}</td>
+                                    <td>{{'dealership.dealership-list.postal-code' | translate}}</td>
+                                    <td>{{'dealership.dealership-list.phone-1' | translate}}</td>
+
+                                    <th class="d-flex justify-content-end">{{'global.actions' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let dealership of dealershipList">
+                                    <td>{{dealership.name}}</td>
+                                    <td>{{dealership.dealerCode}}</td>
+                                    <td>{{getProvinceName(dealership.provinceId)}}</td>
+                                    <td>{{dealership.streetNameAndNumber}}</td>
+                                    <td>{{dealership.postalCode}}</td>
+                                    <td>{{dealership.phone1}}</td>
+                                    <!-- <td>{{getCityName(dealership.cityId)}}</td> -->
+                                    <td class="d-flex justify-content-end">
+
+                                        <div class="spinner-border" role="status" *ngIf="isDeleting"></div>
+
+                                        <button *ngxPermissionsOnly="[isReadOnly()]" type="button"
+                                            class="btn btn-primary" (click)="viewDealership(dealership.id)"
+                                            ngbTooltip="{{'global.view' | translate}}">
+                                            <i class="mdi mdi-eye-outline align-middle"></i>
+                                        </button>
+
+                                        <ng-container *ngxPermissionsOnly="[isAdmin()]">
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-light"
+                                                ngbTooltip="{{'global.edit' | translate}}"
+                                                (click)="editDealership(dealership.id)">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                style="margin-left: 10px" ngbTooltip="{{'global.delete' | translate}}"
+                                                (click)="askForDeleteDealership(dealership.id)">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </ng-container>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+                        <div class="text-md-right d-flex justify-content-end pagination-rounded">
+                            <ngb-pagination [collectionSize]="total" [(page)]="pageNumber" [pageSize]="pageSize"
+                                (pageChange)="onPageChange($event)">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

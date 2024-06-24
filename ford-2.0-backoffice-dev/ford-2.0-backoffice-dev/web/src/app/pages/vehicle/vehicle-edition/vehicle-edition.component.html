@@ -1,0 +1,413 @@
+<div class="container-fluid">
+    <app-page-title title="{{'vehicle.vehicles' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <div *ngIf="isSaving" class="d-flex justify-content-end align-items-center mb-3">
+        <span class="spinner-border" role="status" style="width:15px; height: 15px"></span>
+        <span style="margin-left:5px;">{{'global.saving' | translate}}</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <!---------------------------------------------- GENERAL INFO CARD------------------------------------------->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{'global.basic-info' | translate}}</h4>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label for="name">{{'vehicle.vehicle-edition.name' | translate}}</label>
+                                <input id="name" name="name" type="text" class="form-control" formControlName="name"
+                                    placeholder="{{'vehicle.vehicle-edition.name' | translate}}"
+                                    [ngClass]="{'is-invalid': submit && controls.name.errors}">
+                                <div *ngIf="submit && controls.name.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.name.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+
+                                <label for="type" class="mt-5">{{'vehicle.vehicle-edition.type' | translate}}</label>
+                                <select name="type" formControlName="type"
+                                    [disabled]="!vehicleTypes || vehicleTypes.length == 0" class="form-select"
+                                    [ngClass]="{'is-invalid': submit && controls.type.errors}" [value]="selectedType">
+                                    <option value="''">{{'vehicle.vehicle-edition.select-type' | translate}}</option>
+                                    <option *ngFor="let type of vehicleTypes" [value]="type">
+                                        {{'vehicle.vehicle-edition.' + type | translate}}</option>
+                                </select>
+                                <div *ngIf="submit && controls.type.errors" class="invalid-feedback">
+                                    <span *ngIf="controls.type.errors.required">{{'global.mandatory-data' |
+                                        translate}}</span>
+                                </div>
+
+                                <div class="mt-4 d-flex align-items-end">
+                                    <label for="enabled" style="margin-bottom:0;">
+                                        {{'vehicle.vehicle-edition.enable' | translate}}
+                                    </label>
+                                    <ui-switch defaultBoColor="#00095b" size="small" color="#00095b"
+                                        style="margin-left:20px;" formControlName="enabled" name="enabled"></ui-switch>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3 text-center">
+                                <label>{{'vehicle.vehicle-edition.detail-image' | translate}}</label>
+
+                                <ng-container *ngIf="!currentVehicle.image">
+                                    <div class="dropzone dropzone-primary mb-3 mt-1" [dropzone]="generalImageDropzone"
+                                        (success)="getGeneralImageDropzoneResponse($event)" [disabled]="isViewMode()">
+                                        <div
+                                            class="dz-message needsclick d-flex align-items-center justify-content-center">
+                                            <h4>{{'vehicle.vehicle-edition.upload-image' | translate}}</h4>
+                                        </div>
+                                    </div>
+                                    <label>{{'vehicle.vehicle-edition.image-note' | translate}}</label>
+                                </ng-container>
+
+                                <div *ngIf="currentVehicle.image">
+                                    <div class="row justify-content-center">
+                                        <img class="rounded-10 general-image" src="{{currentVehicle.image}}">
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <button *ngIf="!isViewMode()" class="btn btn-danger"
+                                            (click)="removeGeneralImage()">
+                                            {{'vehicle.vehicle-edition.remove-image' | translate}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!------------------------------------------ IMAGE AND COLORS CARD -------------------------------------------------->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{'vehicle.vehicle-edition.images-and-colors' | translate}}</h4>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 mt-3 carousels-width">
+                                <div class="row mt-5">
+                                    <div class="col-6">
+                                        <label class="form-label">{{'vehicle.vehicle-edition.images' |
+                                            translate}}</label>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end" *ngIf="!isViewMode()">
+                                        <button type="button" class="btn btn-primary" (click)="addImages(imagesModal)">
+                                            <i class="bx bx-plus align-middle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row  mt-3">
+                                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                                        *ngIf="imagesList.length == 0">
+                                        <span>
+                                            {{ 'vehicle.vehicle-edition.no-images-to-show' | translate }}
+                                        </span>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <ngb-carousel id="vehicleImageCarousel" *ngIf="imagesList.length > 0"
+                                            class="carousel" (slide)="getCurrentIndex($event)" [interval]="false">
+                                            <ng-template ngbSlide *ngFor="let image of imagesList">
+                                                <div class="text-center" style="width: 100%; height: 300px;">
+                                                    <img [src]="image.vehicleImageUrl" height="248" width="auto"
+                                                        style="height:248px"
+                                                        class="animated d-block img-fluid carousel-image">
+                                                    <button *ngIf="!isViewMode()" class="btn btn-danger mt-3"
+                                                        type="button" (click)="removeVehicleImage()">
+                                                        {{'vehicle.vehicle-edition.remove-image' | translate}}
+                                                    </button>
+                                                </div>
+                                            </ng-template>
+                                        </ngb-carousel>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 mt-3 carousels-width">
+                                <div class="row mt-5">
+                                    <div class="col-6">
+                                        <label class="form-label">{{'vehicle.vehicle-edition.colors' |
+                                            translate}}</label>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <button *ngIf="!isViewMode()" type="button" class="btn btn-primary"
+                                            (click)="addColorImages(colorsModal)">
+                                            <i class="bx bx-plus align-middle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                                        *ngIf="colorsList.length == 0">
+                                        <span>
+                                            {{ 'vehicle.vehicle-edition.no-colors-to-show' | translate }}
+                                        </span>
+                                    </div>
+                                    <div *ngIf="colorsList.length > 0" class="d-flex justify-content-center">
+                                        <ngb-carousel class="carousel" [interval]="false"
+                                            (slide)="getCurrentColorIndex($event)">
+                                            <ng-template ngbSlide *ngFor="let color of colorsList">
+                                                <div class="text-center" style="position:relative">
+                                                    <img [src]="color.vehicleImageUrl"
+                                                        style="width: 100%; height: 100%;"
+                                                        class="animated d-block img-fluid carousel-image">
+                                                    <div class="row carousel-color-image-caption">
+                                                        <div class="col-6">
+                                                            <img [src]="color.colorImageUrl"
+                                                                class="d-flex mt-2 rounded-circle color-image">
+                                                        </div>
+                                                        <div class="col-6 d-flex justify-content-end">
+                                                            <label class="form-label fs-1">
+                                                                {{color.colorName}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-color-image-mask"></div>
+                                                    <button *ngIf="!isViewMode()" type="button"
+                                                        class="btn btn-danger mt-3" (click)="removeColorImage()">
+                                                        {{'vehicle.vehicle-edition.remove-image' | translate}}
+                                                    </button>
+                                                </div>
+                                            </ng-template>
+                                        </ngb-carousel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------------------FEATURES CARD -------------------------------------------------->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{'vehicle.vehicle-edition.vehicle-features' |
+                            translate}}</h4>
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <label class="form-label">{{'vehicle.vehicle-edition.feature-groups' |
+                                    translate}}</label>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button *ngIf="!isViewMode()" type="button" class="btn btn-primary"
+                                    (click)="addFeatureGroup(featureGroupModal)">
+                                    <i class="bx bx-plus align-middle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                                *ngIf="featureGroupsList.length == 0">
+                                <span>
+                                    {{ 'vehicle.vehicle-edition.no-feature-group-to-show' | translate }}
+                                </span>
+                            </div>
+                            <div *ngIf="featureGroupsList.length > 0" class="drag-and-drop-list" cdkDropList
+                                (cdkDropListDropped)="onFeatureGroupDropped($event)">
+                                <div *ngFor="let featureGroup of featureGroupsList" cdkDrag
+                                    class="drag-and-drop-list-item">
+                                    <hr>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <div class="drag-handle" cdkDragHandle>
+                                                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                                    </path>
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                </svg>
+                                            </div>
+                                            <label class="form-label">{{featureGroup.name}}</label>
+                                        </div>
+                                        <div class="col-6 d-flex justify-content-end" *ngIf="!isViewMode()">
+                                            <button type="button" class="btn btn-primary"
+                                                (click)="addFeature(featureModal, featureGroup)">
+                                                <i class="bx bx-plus align-middle"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-light" style="margin-left: 10px"
+                                                (click)="editFeatureGroup(featureGroupModal, featureGroup)">
+                                                <i class="bx bx-pencil align-middle"></i>
+                                            </button>
+                                            <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                style="margin-left: 10px" (click)="deleteFeatureGroup(featureGroup)">
+                                                <i class="bx bx-trash align-middle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="ps-4">
+                                        <div class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+                                            *ngIf="!featureGroup.features || featureGroup.features.length == 0">
+                                            <span>
+                                                {{ 'vehicle.vehicle-edition.no-feature-to-show' |
+                                                translate }}
+                                            </span>
+                                        </div>
+
+                                        <div *ngIf="featureGroup.features && featureGroup.features.length > 0"
+                                            cdkDropList (cdkDropListDropped)="onFeatureDropped(featureGroup, $event)">
+                                            <div *ngFor="let feature of featureGroup.features" cdkDrag>
+                                                <div class="row mt-1 py-1"
+                                                    [ngClass]="{'feature-hover': feature.isHover}">
+                                                    <div class="col-6">
+                                                        <div class="feature-name-wrapper">
+                                                            <div class="drag-handle" cdkDragHandle>
+                                                                <svg width="16px" fill="#495057bd"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                                                    </path>
+                                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <label class="form-label feature-name">
+                                                                {{feature.name}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end" *ngIf="!isViewMode()">
+                                                        <button type="button" class="btn btn-light"
+                                                            (click)="editFeature(featureModal, featureGroup, feature)"
+                                                            (mouseenter)="feature.isHover = true"
+                                                            (mouseleave)="feature.isHover = false">
+                                                            <i class="bx bx-pencil align-middle"></i>
+                                                        </button>
+                                                        <button *ngIf="!isDeleting" type="button" class="btn btn-danger"
+                                                            style="margin-left: 10px"
+                                                            (click)="deleteFeature(featureGroup, feature)"
+                                                            (mouseenter)="feature.isHover = true"
+                                                            (mouseleave)="feature.isHover = false">
+                                                            <i class="bx bx-trash align-middle"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-secondary" type="button" (click)="cancel()">{{'global.cancel' |
+                translate}}</button>
+            <button *ngIf="isEditMode()" type="button" class="btn btn-danger"
+                (click)="askForDeleteVehicle()">{{'global.delete' |
+                translate}}</button>
+            <button *ngIf="!isViewMode()" type="submit" class="btn btn-primary">{{'global.save' | translate}}</button>
+        </div>
+    </form>
+</div>
+
+<!---------------------------------------- FEATURE GROUP MODAL ----------------------------------------------------------------->
+<ng-template #featureGroupModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'vehicle.vehicle-edition.add-feature-group' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <label>{{'vehicle.vehicle-edition.name' | translate}}</label>
+        <input id="name" type="text" class="form-control" maxlength="500" [(ngModel)]="currentFeatureGroupName"
+            placeholder="{{'vehicle.vehicle-edition.name' | translate}}">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">{{'global.close' |
+            translate}}</button>
+        <button type="button" class="btn btn-primary"
+            (click)="saveFeatureGroup(); modal.close('Close click')">{{'global.save' | translate}}</button>
+    </div>
+</ng-template>
+
+
+<!---------------------------------------- FEATURE MODAL ----------------------------------------------------------------->
+<ng-template #featureModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'vehicle.vehicle-edition.add-feature' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <label>{{'vehicle.vehicle-edition.name' | translate}}</label>
+        <input id="name" type="text" class="form-control" maxlength="500" [(ngModel)]="currentFeatureName"
+            placeholder="{{'vehicle.vehicle-edition.name' | translate}}">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
+            {{'global.close' | translate}}</button>
+        <button type="button" class="btn btn-primary"
+            (click)="saveFeature(); modal.close('Close click')">{{'global.save' | translate}}</button>
+    </div>
+</ng-template>
+
+<!---------------------------------------- VEHICLE IMAGE MODAL ----------------------------------------------------------------->
+
+<ng-template #imagesModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'vehicle.vehicle-edition.add-images' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body text-center">
+        <div class="dropzone dropzone-primary mb-3 mt-1" [dropzone]="vehicleImagesDropzone"
+            (success)="getVehicleImagesDropzoneResponse($event)">
+            <div class="dz-message needsclick d-flex align-items-center justify-content-center">
+                <h4>{{'vehicle.vehicle-edition.upload-image' | translate}}</h4>
+            </div>
+        </div>
+        <label>{{'vehicle.vehicle-edition.image-carousel-note' | translate}}</label>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">{{'global.close' |
+            translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="finishVehicleImage(); modal.close('Close click')">
+            {{'global.finish' | translate}}</button>
+    </div>
+</ng-template>
+
+<!---------------------------------------- COLOR MODAL ----------------------------------------------------------------->
+
+<ng-template #colorsModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'vehicle.vehicle-edition.add-color-images' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <label class="form-label">{{'vehicle.vehicle-edition.name' | translate}}</label>
+        <input type="text" class="form-control" placeholder="{{'vehicle.vehicle-edition.name' | translate}}"
+            [(ngModel)]="colorName" [ngClass]="{'is-invalid': finish && !colorName}">
+        <div *ngIf="finish && !colorName" class="invalid-feedback">
+            <span *ngIf="!colorName">{{'global.mandatory-data' |
+                translate}}</span>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 text-center">
+                <label class="form-label">{{'vehicle.vehicle-edition.color' | translate}}</label>
+                <div class="dropzone dropzone-primary mb-3 mt-1 d-flex justify-content-center align-items-center color-modal-dropzone"
+                    [dropzone]="colorsDropzone" (success)="getColorsDropzoneResponse($event)">
+                    <!-- <div class="dz-message needsclick d-flex align-items-center justify-content-center">
+                        <h4>{{'vehicle.vehicle-edition.upload-image' | translate}}</h4>
+                    </div> -->
+                </div>
+                <label>{{'vehicle.vehicle-edition.image-color-note' | translate}}</label>
+            </div>
+            <div class="col-6 text-center">
+                <label class="form-label">{{'vehicle.vehicle-edition.vehicle' | translate}}</label>
+                <div class="dropzone dropzone-primary mb-3 mt-1 d-flex justify-content-center align-items-center color-modal-dropzone"
+                    [dropzone]="colorVehiclesDropzone" (success)="getColorVehiclesDropzoneResponse($event)">
+                    <!-- <div class="dz-message needsclick d-flex align-items-center justify-content-center">
+                        <h4>{{'vehicle.vehicle-edition.upload-image' | translate}}</h4>
+                    </div>  -->
+                </div>
+                <label>{{'vehicle.vehicle-edition.image-carousel-note' | translate}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">{{'global.close' |
+            translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="colorImageFinish(modal)">
+            {{'global.finish' | translate}}</button>
+    </div>
+</ng-template>

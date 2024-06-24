@@ -1,0 +1,183 @@
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* You can add global styles to this file, and also import other style files */
+.modal-holder {
+  animation-name: example;
+  animation-duration: 0.3s;
+}
+
+@keyframes example {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// ============ CAROUSEL =======================
+
+@media only screen and (max-width: 1800px) {
+  .carousels-width {
+    width: 100% !important;
+  }
+}
+
+.general-image {
+  object-fit: contain;
+  height: 290px;
+  width: 751px;
+}
+
+.carousel {
+  max-width: 751px;
+}
+
+.carousel-image {
+  object-fit: contain;
+  max-height: 290px;
+  max-width: 751px;
+}
+
+.color-image {
+  height: 35px;
+  width: 35px;
+  margin-left: 15px;
+}
+
+.color-modal-dropzone {
+  width: 221px;
+  height: 230px;
+}
+
+.carousel-color-image-mask {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 52px);
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(179, 176, 176, 0.3), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+}
+
+.carousel-color-image-caption {
+  position: absolute;
+  top: 68%;
+  left: 0;
+  width: 100%;
+  color: white;
+  z-index: 2;
+}
+
+.carousel-item {
+  transition: opacity 0.7s ease !important;
+  position: absolute !important;
+  display: block !important;
+  opacity: 0;
+}
+
+.carousel-item.active {
+  position: relative !important;
+  opacity: 1;
+}
+
+//======= MESSAGE STYLES ===========
+.success-message {
+  color: #1f7556 !important;
+  background-color: #d6f3e9 !important;
+  border-color: #c2eddd !important;
+}
+
+.warning-message {
+  color: #916c2e !important;
+  background-color: #fcf0db !important;
+  border-color: #fbe9c9 !important;
+}
+
+.error-message {
+  color: #924040 !important;
+  background-color: #fde1e1 !important;
+  border-color: #fcd2d2 !important;
+}
+
+.message-container {
+  background: transparent !important;
+}
+
+// ====== swal2 override ==============
+.swal2-title {
+  padding: 0.8em 1em 0.8em !important;
+}
+//================================
+
+.login-title-container {
+  background-color: #00095b !important;
+}
+
+.login-title-text {
+  color: white !important;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.table-image-cell {
+  width: 60px !important;
+}
+
+.version-currency-select {
+  width: 60px !important;
+  background: #eff2f7 !important;
+  cursor: pointer;
+}
+
+.terms-and-conditions-editor {
+  margin: 0 30px;
+}
+
+//============ CONFIGURATIONS PDF VIEWER ============================
+.pdf-preview-label:hover {
+  cursor: pointer;
+  background: #d9d9d9;
+}
+
+.qr-code-guest-edit {
+  .qrcode {
+    width: 206px;
+    height: 206px;
+    border: 3px solid #ffffff;
+    border-radius: 6px;
+    box-shadow: 1px 1px 4px 2px rgba(27, 27, 27, 0.3);
+  }
+}
+
+.app-search {
+  .form-control:disabled {
+    background-color: #eae8e899  !important;
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: #d8d8d899 ; /* Chrome, Firefox, Opera, Safari 10.1+ */
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder {
+      color: #d8d8d899; /* Internet Explorer 10-11 */
+    }
+
+    &::-ms-input-placeholder {
+      color: #d8d8d899; /* Microsoft Edge */
+    }
+  }
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

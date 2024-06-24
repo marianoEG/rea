@@ -1,0 +1,2 @@
+// comando para mapear la base del Server
+Scaffold-DbContext "Data Source=fordeventos.com.ar,1433;Initial Catalog=FordEventsDev;User Id=forddev;Password=o`$x^MX78W6&Pvu3L!`$1U" Microsoft.EntityFrameworkCore.SqlServer -NoOnConfiguring -Project FordEvents.Model -OutputDir FordEventsDB -Context FEContext -Force

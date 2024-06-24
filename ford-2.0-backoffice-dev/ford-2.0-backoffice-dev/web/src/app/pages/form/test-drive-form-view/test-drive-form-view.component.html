@@ -1,0 +1,141 @@
+<div class="container-fluid">
+    <app-page-title title="{{'form.forms' | translate}}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+
+                    <div class="mt-3 d-flex align-items-center justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="formRadios" id="formRadios1"
+                                [checked]="currentTestDriveForm.hasVehicle == true" [disabled]="true">
+                            <label class="form-check-label" for="formRadios1">
+                                {{'form.test-drive-form-view.has-vehicle' | translate}}
+                            </label>
+                        </div>
+                        <div class="form-check" style="margin-left: 10px">
+                            <input class="form-check-input" type="radio" name="formRadios" id="formRadios2"
+                                [checked]="currentTestDriveForm.hasVehicle == false" [disabled]="true">
+                            <label class="form-check-label" for="formRadios2">
+                                {{'form.test-drive-form-view.has-no-vehicle' | translate}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-center mt-3">
+                        <div class="col-12">
+                            <label class="form-label">{{'form.test-drive-form-view.brand' | translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="currentTestDriveForm.brand">
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-center mt-3">
+                        <div class="col-12">
+                            <label class="form-label">{{'form.test-drive-form-view.model' | translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="currentTestDriveForm.model">
+                        </div>
+                    </div>
+
+
+                    <div class="row d-flex align-items-center mt-3">
+                        <div class="col-12">
+                            <label class="form-label">{{'form.test-drive-form-view.plate' | translate}}</label>
+                            <input class="form-control" type="text" readonly
+                                [value]="currentTestDriveForm.licencePlate">
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-center mt-3">
+                        <div class="col-12">
+                            <label class="form-label">{{'form.test-drive-form-view.date-of-purchase' |
+                                translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="getDateToShow()">
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-center mt-3">
+                        <div class="col-12">
+                            <label class="form-label">{{'form.test-drive-form-view.vehicle-of-interest' |
+                                translate}}</label>
+                            <input class="form-control" type="text" readonly
+                                [value]="currentTestDriveForm.vehicleOfInterest">
+                        </div>
+                    </div>
+
+                    <div class="mt-3 d-flex align-items-center">
+                        <ui-switch defaultBoColor="#00095b" size="small" color="#00095b" style="margin-left:20px;"
+                            [checked]="currentTestDriveForm.companions" [disabled]="true">
+                        </ui-switch>
+
+                        <label style="margin-bottom:0px; margin-left: 10px;">
+                            {{'form.test-drive-form-view.companions' | translate}}</label>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <label class="form-label">{{'form.test-drive-form-view.firstname' | translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="currentTestDriveForm.firstname">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">{{'form.test-drive-form-view.lastname' | translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="currentTestDriveForm.lastname">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">{{'form.test-drive-form-view.age' | translate}}</label>
+                            <input class="form-control" type="text" readonly [value]="currentTestDriveForm.age">
+                        </div>
+                    </div>
+
+                    <div class="mt-3 d-flex align-items-center">
+
+                        <ui-switch defaultBoColor="#00095b" size="small" color="#00095b" style="margin-left:20px;"
+                            [checked]="currentTestDriveForm.recieveInformation" [disabled]="true">
+                        </ui-switch>
+
+                        <label style="margin-bottom:0px; margin-left: 10px;">
+                            {{'form.test-drive-form-view.recieve-information' | translate}}
+                        </label>
+
+                    </div>
+
+                    <div class="mt-3 d-flex align-items-center">
+                        <ui-switch defaultBoColor="#00095b" size="small" color="#00095b" style="margin-left:20px;"
+                            [checked]="currentTestDriveForm.acceptConditions" [disabled]="true">
+                        </ui-switch>
+
+                        <label
+                            style="margin-bottom:0px; margin-left: 10px;">{{'form.test-drive-form-view.accept-conditions'
+                            | translate}}</label>
+
+                    </div>
+
+                    <div class="mt-4 row">
+                        <label style="color: #00095b; cursor:pointer"
+                            (click)="openTermsAndConditions(termsModal)">{{'form.test-drive-form-view.see-terms' |
+                            translate}}</label>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-secondary" (click)="back()">{{'global.back' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #termsModal role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">{{'form.test-drive-form-view.terms-and-conditions' | translate}}</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">
+            {{'global.finish' | translate}}</button>
+    </div>
+</ng-template>
